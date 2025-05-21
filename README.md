@@ -109,10 +109,45 @@ int main() {
 
 -----
 
-### DataTypes in C++
+### Conditional Statements in C++
+#### ✅ if-else Statement
+- if checks a condition.
+- If it's true, code inside runs.
+- else runs if the condition is false.
+ 🧪 Example:
+```cpp
+int age = 10;
+if (age >= 18)
+    cout << "You are an adult.";
+else
+    cout << "You are not an adult.";
+```
+🧾 Output: You are not an adult.
 
+#### ✅ else if Statement
+Used when you want to check multiple conditions one after another.
+ 🧪 Example:
+```cpp
+int marks = 54;
 
+if (marks < 25)
+    cout << "Grade: F";
+else if (marks <= 44)
+    cout << "Grade: E";
+else if (marks <= 49)
+    cout << "Grade: D";
+else if (marks <= 59)
+    cout << "Grade: C";
+else if (marks <= 69)
+    cout << "Grade: B";
+else
+    cout << "Grade: A";
 
+```
+🧾 Output: Grade: C
+👉 Instead of checking both >= and <=, you can just check <= because previous conditions already filter the lower values.
+
+----
 
 
 
