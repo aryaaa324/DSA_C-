@@ -38,7 +38,26 @@ int main() {
 std::cout << "Hello\nWorld";
 ```
 
+#### ✅ 4. Skip std:: every time
+Use this to make code shorter:
+```cpp
+using namespace std;
+```
+Now you can write cout and cin directly.
 
+####  ✅ 5. Taking Input
+Use cin to take input from the user:
+```cpp
+int x;
+cin >> x;
+cout << "Value: " << x;
+```
+✔️ For two inputs:
+```cpp
+int x, y;
+cin >> x >> y;
+cout << "x: " << x << " y: " << y;
+```
 
 
 
