@@ -567,3 +567,85 @@ This avoids copying and also protects the original value.
 
 ----
 
+### ✅ Time and Space Complexity 
+#### 📌 What is Time Complexity?
+- Time complexity measures how the time to run an algorithm increases with input size.
+- It does not refer to actual time taken on a machine (as that varies with hardware).
+- Big O notation is used to express time complexity, e.g., O(N), O(N²), O(log N).
+
+#### 💡 Why Not Use Actual Time?
+- Time differs on different machines (e.g., old PC vs. modern MacBook).
+- So we measure how steps increase with input size N, rather than seconds or milliseconds.
+
+#### 🧠 How to Represent Time Complexity?
+We follow:
+Use Big O notation to describe the upper bound of steps.
+**For example**, a loop running 3N steps:
+✅ O(3N) → simplifies to ✅ O(N) (drop constant).
+
+#### ⚙️ Rules for Calculating Time Complexity
+- Always use the worst-case scenario:
+**Best case:** Fewest steps
+**Worst case:** Maximum steps → use this
+**Average case:** Middle ground, not usually considered unless explicitly asked
+
+**Ignore constants:**
+O(4N³ + 3N² + 8) → becomes O(N³) as N grows large
+
+**Ignore lower-order terms:**
+Same example: N² and constant 8 become negligible as N increases
+
+#### ⚖️ Other Notations (Less Used in Interviews)
+
+| Notation | Meaning                    |
+|----------|----------------------------|
+| **Big O (O)** | Worst-case time complexity     |
+| **Theta (θ)** | Average-case (tight bound)     |
+| **Omega (Ω)** | Best-case time complexity      |
+
+👉 These are less important in interviews – Big O is the key focus.
+
+**✅ Example Questions**
+📘 Q1: Nested loop (both run N times)
+```cpp
+for (int i = 0; i < N; i++)
+    for (int j = 0; j < N; j++)
+        cout << i << " " << j;
+```
+- Outer loop → N times
+- Inner loop → N times
+- Total → N * N = N²
+- ✅ Time Complexity: O(N²)
+
+📘 Q2: Inner loop runs from 0 to i
+```cpp
+for (int i = 0; i < N; i++)
+    for (int j = 0; j <= i; j++)
+        cout << i << " " << j;
+```
+- Steps: 1 + 2 + 3 + ... + N = N(N+1)/2
+- ✅ Time Complexity: O(N²) (drop constants)
+
+#### 🧠 What is Space Complexity?
+- Measures how much memory is used.
+Includes:
+- Auxiliary space: Extra memory for variables, arrays, stacks
+- Input space: Memory for storing input data
+
+**📘 Example:**
+```cpp
+int a, b; // input space
+int c = a + b; // auxiliary space
+```
+- Total space = 3 units → Space Complexity = O(1)
+📘 If you use an array of size N → Space Complexity = O(N)
+
+#### 🚫 Avoiding Bad Practice
+- Don’t overwrite inputs (e.g., b = a + b) just to save space
+- In interviews, NEVER manipulate given data unless told to do so
+
+#### ✅ Key Takeaways
+- Use Big O notation for both time and space.
+- Always analyze the worst-case scenario.
+- Ignore constants and lower-order terms.
+- Don’t manipulate inputs for better space complexity unless allowed.
