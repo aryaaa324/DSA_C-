@@ -287,3 +287,6 @@ int main() {
 | Array         | Collection of same-type elements accessed by index | `int arr[3] = {1,2,3};` |
 | C-Style String| Array of characters ending with '\0'           | `char str[] = "Hi";`     |
 | C++ String    | Class that stores and manages text easily       | `string s = "Hello";`    |
+
+----
+
