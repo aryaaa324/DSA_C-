@@ -4,6 +4,8 @@ A repository containing all the detailed concepts of Data Structures and Algorit
 ----
 
 ## Step 1: Learn the Basics 
+## Lec-1
+----
 ### Imput/Output in C++
 A short and simple summary of C++ I/O for beginners – inspired by takeUforward.
 
@@ -107,7 +109,7 @@ int main() {
 
 -----
 
-
+### DataTypes in C++
 
 
 
