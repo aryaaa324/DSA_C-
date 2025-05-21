@@ -658,4 +658,4 @@ int c = a + b; // auxiliary space
 ### Must Do Patterns
 
 #### Pattern-1
-![Star Pattern](DSA_C-/pattern_img/)
+![Star Pattern](DSA_C-/pattern_img/pattern_1.png)
