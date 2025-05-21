@@ -59,8 +59,12 @@ cin >> x >> y;
 cout << "x: " << x << " y: " << y;
 ```
 
-
-
+#### ✅ 6. Shortcut to include all libraries
+use:
+```cpp
+#include<bits/stdc++.h>
+```
+⚠️ Not official C++ standard, but common in coding contests.
 
 
 
