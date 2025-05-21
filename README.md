@@ -4,7 +4,7 @@ A repository containing all the detailed concepts of Data Structures and Algorit
 ----
 
 ## Step 1: Learn the Basics 
-## Lec-1
+## Lec-1 : Basic Things to Know in C++
 ----
 ### Imput/Output in C++
 A short and simple summary of C++ I/O for beginners – inspired by takeUforward.
@@ -652,3 +652,10 @@ int c = a + b; // auxiliary space
 - Don’t manipulate inputs for better space complexity unless allowed.
 
 ----
+
+## Lec-2 : Build-Up Logical Thinking 
+----
+### Must Do Patterns
+
+## Pattern-1
+![Star Pattern](C:\Users\91971\Pictures\Screenshots\Screenshot 2025-05-21 225155.png)
