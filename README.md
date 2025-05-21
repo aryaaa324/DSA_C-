@@ -182,11 +182,108 @@ Output: Thursday
 - Duplicate case values are not allowed.
 - You can nest switch statements but it’s usually discouraged for readability.
 
+----
 
+### Arrays and Strings in C++
+**What is an Array?**
+An array is a collection of elements of the same data type stored in contiguous memory locations.
+- It allows you to store multiple values under one variable name.
+- Each element can be accessed using an index starting from 0.
 
+**Why use arrays?**
+- To manage and organize multiple related values easily.
+- Instead of creating many separate variables, use one array.
 
+**How to declare an array?**
+```cpp
+type arrayName[size];
+```
 
+**Example:**
+```cpp
+int numbers[5]; // Declares an array of 5 integers
+```
 
+**How to initialize an array?**
+```cpp
+int numbers[5] = {10, 20, 30, 40, 50};
+```
+**Accessing elements**
+- Use the index (starting at 0) to get or set values.
+```cpp
+cout << numbers[2];  // Output: 30 (3rd element)
+numbers[0] = 100;    // Changes 1st element to 100
+```
 
+**Example: Array to print 5 numbers**
+```cpp
+#include <iostream>
+using namespace std;
 
+int main() {
+    int arr[5] = {1, 2, 3, 4, 5};
 
+    for (int i = 0; i < 5; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+```
+Output: 1 2 3 4 5
+
+**What is a String?**
+A string is a sequence of characters.
+In C++, there are two main ways to use strings:
+- C-style strings (character arrays ending with '\0' null character)
+- The C++ string class from the standard library (<string>), which is easier and safer.
+
+**1. C-Style Strings (Character Arrays)**
+A string is stored as an array of characters ending with a special '\0' (null) character that marks the end.
+
+- Declared like this:
+```cpp
+char name[20] = "Arya";  // array of chars with a string
+```
+
+**Example: Print a C-style string**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    char name[] = "Arya";
+    cout << name << endl;  // Output: Arya
+    return 0;
+}
+```
+**Important:** Always make sure there is enough space for the characters + the null '\0' character.
+
+**2. C++ string Class**
+- More powerful and easier to work with than C-style strings.
+- Automatically manages memory and size.
+- Include the string library: #include <string>
+
+Declared like this:
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string name = "Arya";
+    cout << name << endl;  // Output: Arya
+
+    // You can also concatenate strings easily:
+    string greeting = "Hello, " + name + "!";
+    cout << greeting << endl;  // Output: Hello, Arya!
+
+    return 0;
+}
+```
+**Summary**
+| Concept       | Description                                   | Example                  |
+|---------------|-----------------------------------------------|--------------------------|
+| Array         | Collection of same-type elements accessed by index | `int arr[3] = {1,2,3};` |
+| C-Style String| Array of characters ending with '\0'           | `char str[] = "Hi";`     |
+| C++ String    | Class that stores and manages text easily       | `string s = "Hello";`    |
