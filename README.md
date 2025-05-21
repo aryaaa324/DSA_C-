@@ -458,10 +458,57 @@ while (true) {
     // runs forever unless we use break
 }
 ```
-
 #### ✅ Use while when:
 - You don't know in advance how many times to repeat.
 - You want to keep running until a condition is false.
 
 ----
+
+### Functions (Pass by Values and Reference)
+#### 🧠 What is a Function?
+A function is a reusable block of code that performs a specific task.
+
+#### ✅ Why use functions?
+- To avoid repeating code.
+- To divide big programs into small, manageable pieces.
+
+**📌 Function Syntax:**
+```cpp
+returnType functionName(parameters) {
+    // function body
+    return value; // if needed
+}
+```
+
+#### 🎯 Two Ways to Pass Data to Functions:
+1. Pass by Value (copy is sent)
+2. Pass by Reference (actual variable is sent)
+
+**🔹 1. Pass by Value**
+👉 A copy of the variable is passed.
+👉 Changes made inside the function don’t affect the original variable.
+
+**🧪 Example:**
+```cpp
+#include <iostream>
+using namespace std;
+
+void changeValue(int x) {
+    x = 100;
+    cout << "Inside function: " << x << endl;
+}
+
+int main() {
+    int a = 5;
+    changeValue(a);
+    cout << "Outside function: " << a << endl;
+    return 0;
+}
+```
+**🔎 Output:**
+```cpp
+Inside function: 100  
+Outside function: 5
+```
+🎯 Even though x is changed to 100 inside the function, the original a remains 5 because only a copy was passed.
 
