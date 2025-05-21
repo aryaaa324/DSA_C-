@@ -657,5 +657,5 @@ int c = a + b; // auxiliary space
 ----
 ### Must Do Patterns
 
-## Pattern-1
+#### Pattern-1
 ![Star Pattern](C:\Users\91971\Pictures\Screenshots\Screenshot 2025-05-21 225155.png)
