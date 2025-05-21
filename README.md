@@ -364,3 +364,104 @@ i = 21
 ```
 
 ----
+
+### While Loop
+🌀 What is a while loop?A while loop is used to repeat code as long as a condition is true.
+
+#### ✅ How it works:
+- Check the condition.
+- If it's true, run the loop body.
+- Repeat until the condition becomes false.
+
+**Basic Syntax**
+```cpp
+while (condition) {
+    // code to repeat
+}
+```
+
+**📌 Example 1: Print numbers from 1 to 5**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i = 1;
+    while (i <= 5) {
+        cout << i << " ";
+        i++;
+    }
+    return 0;
+}
+```
+**Output:**
+```cpp
+1 2 3 4 5
+```
+
+**📌 Example 2: Factorial of a number**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n = 5;
+    int fact = 1;
+
+    while (n > 0) {
+        fact *= n;
+        n--;
+    }
+
+    cout << "Factorial is: " << fact << endl;
+    return 0;
+}
+
+```
+**Output:**
+```cpp
+Factorial is: 120
+```
+
+#### 🛑 break - Exit loop early
+```cpp
+int i = 1;
+while (i <= 10) {
+    if (i == 4) break;
+    cout << i << " ";
+    i++;
+}
+```
+**Output:**
+```cpp
+1 2 3
+```
+
+#### 🔄 continue - Skip current loop iteration
+```cpp
+int i = 0;
+while (i < 6) {
+    i++;
+    if (i % 2 == 0) continue; // skip even numbers
+    cout << i << " ";
+}
+```
+**Output:**
+```cpp
+1 3 5
+```
+
+#### ⚠️ Warning: Infinite loop
+If the condition never becomes false, the loop runs forever.
+```cpp
+while (true) {
+    // runs forever unless we use break
+}
+```
+
+#### ✅ Use while when:
+- You don't know in advance how many times to repeat.
+- You want to keep running until a condition is false.
+
+----
+
