@@ -149,6 +149,39 @@ else
 
 ----
 
+### Switch Statement
+- Used when you have one variable and want to compare it to many exact values.
+- Cleaner and easier to read for multiple fixed-value cases.
+- Only works with integer or char values.
+- Each case represents one possible value.
+- Use break after each case to stop checking further cases.
+- default handles any value not matched by cases.
+
+**Example:** Switch Statement
+```cpp
+int day = 4;
+
+switch(day) {
+    case 1: cout << "Monday"; break;
+    case 2: cout << "Tuesday"; break;
+    case 3: cout << "Wednesday"; break;
+    case 4: cout << "Thursday"; break;
+    case 5: cout << "Friday"; break;
+    case 6: cout << "Saturday"; break;
+    case 7: cout << "Sunday"; break;
+    default: cout << "Invalid"; 
+}
+```
+Output: Thursday
+
+**Important Points About Switch**
+- The expression must be a constant or result in a constant value.
+- Works only with int or char types.
+- The break keyword is essential to stop fall-through to other cases.
+- default case is optional but useful for unexpected values.
+- Duplicate case values are not allowed.
+- You can nest switch statements but it’s usually discouraged for readability.
+
 
 
 
