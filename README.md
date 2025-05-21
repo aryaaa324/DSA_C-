@@ -512,3 +512,58 @@ Outside function: 5
 ```
 🎯 Even though x is changed to 100 inside the function, the original a remains 5 because only a copy was passed.
 
+**🔹 2. Pass by Reference**
+👉 The actual variable is passed using &.
+👉 Changes inside the function affect the original variable.
+
+**🧪 Example:**
+```cpp
+#include <iostream>
+using namespace std;
+
+void changeValue(int &x) {
+    x = 100;
+    cout << "Inside function: " << x << endl;
+}
+
+int main() {
+    int a = 5;
+    changeValue(a);
+    cout << "Outside function: " << a << endl;
+    return 0;
+}
+
+```
+**🔎 Output:**
+```cpp
+Inside function: 100  
+Outside function: 100
+```
+🎯 Now the change reflects outside the function too, because the actual variable was modified.
+
+
+#### 🧪 Quick Comparison Table
+
+| Feature           | Pass by Value                     | Pass by Reference                  |
+|-------------------|------------------------------------|-------------------------------------|
+| What is passed?   | A copy of the variable             | The actual variable                 |
+| Changes reflect?  | ❌ No                              | ✅ Yes                              |
+| Use case          | When you don't want original data to change | When you want to modify original data |
+
+#### 💡 Extra Tip: Use const with reference for safety
+If you want to pass large data (like arrays or strings) efficiently but don’t want to change them, use:
+```cpp
+void showData(const int &x) {
+    cout << x;
+}
+```
+This avoids copying and also protects the original value.
+
+#### 🧠 Summary:
+- Pass by Value: Makes a copy; original remains safe.
+- Pass by Reference: Direct access; can modify original.
+- Use & in parameter to pass by reference.
+- Use const & when passing by reference without changing value.
+
+----
+
