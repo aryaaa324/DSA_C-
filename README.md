@@ -289,4 +289,78 @@ int main() {
 | C++ String    | Class that stores and manages text easily       | `string s = "Hello";`    |
 
 ----
+### For-Loop
+🧠 What is a For Loop?
+A for loop is used when you want to repeat a task multiple times.
 
+It has 3 main parts:
+
+- Initialization – start a counter
+- Condition – keep looping while this is true
+- Increment/Decrement – change counter each time
+
+#### ✅ Basic Syntax:
+```cpp
+for (initialization; condition; update) {
+    // code to repeat
+}
+```
+**🔁 Example 1: Print 1 to 10**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 1; i <= 10; i++) {
+        cout << "i = " << i << endl;
+    }
+    return 0;
+}
+```
+📤 Output: 
+```cpp
+i = 1
+i = 2
+...
+i = 10
+```
+
+**🔁 Example 2: Nested For Loop**
+- Used when we need loops inside loops (like rows & columns):
+```cpp
+for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+        cout << "i = " << i << ", j = " << j << endl;
+    }
+}
+```
+
+**🔁 Example 3: For Loop with If-Else**
+- Print if a number is even or odd:
+```cpp
+for (int i = 1; i <= 5; i++) {
+    if (i % 2 == 0)
+        cout << i << " is Even" << endl;
+    else
+        cout << i << " is Odd" << endl;
+}
+```
+
+**🔁 Example 4: Custom Increment**
+- Increase by 5 instead of 1:
+```cpp
+for (int i = 1; i <= 25; i += 5) {
+    cout << "i = " << i << endl;
+}
+```
+
+**📤 Output:**
+```cpp
+i = 1
+i = 6
+i = 11
+i = 16
+i = 21
+```
+
+----
