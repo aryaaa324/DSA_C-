@@ -12,5 +12,5 @@ A short and simple summary of C++ I/O for beginners – inspired by takeUforward
 Start your code by adding:
 ```cpp
 #include<iostream>
-
+```
 This lets you use cin and cout for input and output.
