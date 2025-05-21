@@ -66,7 +66,46 @@ use:
 ```
 ⚠️ Not official C++ standard, but common in coding contests.
 
+----
+### DataTypes in C++
+#### 1. Built-in Data Types in C++
+| Type      | Keyword | Size (Typical) | Example Value         |
+|-----------|---------|----------------|------------------------|
+| Integer   | `int`   | 4 bytes        | `int x = 10;`          |
+| Character | `char`  | 1 byte         | `char c = 'A';`        |
+| Float     | `float` | 4 bytes        | `float pi = 3.14;`     |
+| Double    | `double`| 8 bytes        | `double d = 3.14159;`  |
+| Boolean   | `bool`  | 1 byte         | `bool isOn = true;`    |
 
+#### 2. Type Modifiers
+| Modifier   | Use                 | Example                 |
+|------------|---------------------|--------------------------|
+| `short`    | Smaller int         | `short s = 100;`         |
+| `long`     | Larger int          | `long l = 100000;`       |
+| `unsigned` | Only positive values| `unsigned int u = 50;`   |
+
+#### 3. Example Code Snippet
+```cpp
+#include<iostream>
+using namespace std;
+
+int main() {
+    int age = 21;
+    char grade = 'A';
+    float temp = 36.5;
+    double pi = 3.141592;
+    bool passed = true;
+    
+    cout << "Age: " << age << "\n";
+    cout << "Grade: " << grade << "\n";
+    cout << "Temperature: " << temp << "\n";
+    cout << "Pi: " << pi << "\n";
+    cout << "Passed? " << passed << "\n";  // prints 1 for true
+    return 0;
+}
+```
+
+-----
 
 
 
