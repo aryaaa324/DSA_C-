@@ -606,6 +606,7 @@ Same example: N² and constant 8 become negligible as N increases
 👉 These are less important in interviews – Big O is the key focus.
 
 **✅ Example Questions**
+
 📘 Q1: Nested loop (both run N times)
 ```cpp
 for (int i = 0; i < N; i++)
