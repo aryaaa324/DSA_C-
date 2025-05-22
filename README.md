@@ -1222,3 +1222,11 @@ Size: 2
 Is empty? 1
 
 ```
+----
+### ✅ What is a Vector in C++?
+A vector is like a resizable array. It can grow or shrink in size when you add or remove elements. It stores data in contiguous memory, just like an array.
+**📌 Syntax:**
+```cpp
+vector<int> v;       // Vector of integers
+vector<string> names; // Vector of strings
+```
