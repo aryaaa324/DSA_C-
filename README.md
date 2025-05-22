@@ -1282,3 +1282,82 @@ After pop_back: 10
 
 ```
 ----
+### 🔹 What is a set in C++?
+A set is a container in C++ STL that:
+- Stores only unique elements
+- Stores elements in sorted order
+- Allows fast insert, search, and delete (average case: O(log n))
+- Internally uses balanced binary search trees (like Red-Black tree)
+**Syntax**
+```cpp
+set<int> s;
+set<string> names;
+```
+
+### 🧮 C++ STL `set` – Common Functions
+
+| Function            | Purpose                                   |
+|---------------------|-------------------------------------------|
+| `insert(x)`         | Adds element `x` to the set               |
+| `find(x)`           | Returns iterator to `x` if present        |
+| `erase(x)`          | Removes element `x`                       |
+| `begin()` / `end()` | Iterators to first and after-last element |
+| `count(x)`          | Checks if `x` exists (returns 1 or 0)     |
+| `clear()`           | Deletes all elements                      |
+| `size()`            | Returns number of elements                |
+| `empty()`           | Checks if set is empty                    |
+
+  
+**Example**
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    set<int> s;
+
+    // Insert elements
+    s.insert(10);
+    s.insert(20);
+    s.insert(30);
+    s.insert(20); // duplicate, will be ignored
+
+    cout << "Elements in set: ";
+    for (auto x : s) {
+        cout << x << " ";
+    }
+
+    // Check if element exists
+    if (s.find(20) != s.end())
+        cout << "\n20 is present in set.";
+
+    // Erase an element
+    s.erase(10);
+
+    cout << "\nSet after deleting 10: ";
+    for (auto x : s) {
+        cout << x << " ";
+    }
+
+    cout << "\nSize: " << s.size();
+
+    // Clear all elements
+    s.clear();
+
+    cout << "\nIs set empty? " << (s.empty() ? "Yes" : "No") << endl;
+
+    return 0;
+}
+
+```
+
+**Output**
+```cpp
+Elements in set: 10 20 30
+20 is present in set.
+Set after deleting 10: 20 30
+Size: 2
+Is set empty? Yes
+
+```
+----
