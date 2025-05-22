@@ -1153,3 +1153,72 @@ int main() {
 
 
 ```
+-----
+## Lec 3: C++ STL
+-----
+### What is STL?
+C++ STL (Standard Template Library) is a collection of pre-written code that helps you use data structures (like vectors, stacks, queues, maps) and algorithms (like sort, binary search) easily and quickly without writing them from scratch.It's super useful in coding, especially in DSA and competitive programming, because it saves time and makes your code faster and cleaner.
+
+### What is an unordered_set?
+- It stores unique elements (no duplicates).
+- The elements are not stored in any order.
+- Most operations (like insert, find) take O(1) time on average.
+
+**🔹 Syntax:**
+```cpp
+unordered_set<int> s;
+```
+### 🔹 Common Functions of `unordered_set`
+
+| Function     | Description                     |
+|--------------|---------------------------------|
+| `insert(x)`  | Adds element `x` to the set     |
+| `erase(x)`   | Removes element `x` from the set|
+| `find(x)`    | Checks if `x` is present        |
+| `count(x)`   | Returns 1 if `x` exists, else 0 |
+| `size()`     | Returns the number of elements  |
+| `clear()`    | Removes all elements            |
+| `empty()`    | Returns `true` if set is empty  |
+
+**Example**
+```cpp
+#include <iostream>
+#include <unordered_set>
+using namespace std;
+
+int main() {
+    unordered_set<int> s;
+
+    s.insert(10);
+    s.insert(20);
+    s.insert(30);
+
+    // Print all elements
+    for (int x : s) {
+        cout << x << " ";
+    }
+    cout << endl;
+
+    // Check if 20 is present
+    if (s.find(20) != s.end())
+        cout << "20 is present\n";
+
+    s.erase(10);  // Remove 10
+
+    cout << "Size: " << s.size() << endl;
+
+    s.clear();  // Remove all
+    cout << "Is empty? " << s.empty() << endl;
+
+    return 0;
+}
+```
+
+**Output**
+```cpp
+30 20 10 
+20 is present
+Size: 2
+Is empty? 1
+
+```
