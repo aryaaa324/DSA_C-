@@ -659,3 +659,66 @@ int c = a + b; // auxiliary space
 
 #### Pattern-1
 ![Star Pattern](pattern_img/pattern_1.png)
+
+#### Pattern-2
+![Star Pattern](pattern_img/pattern_2.png)
+
+#### Pattern-3
+![Star Pattern](pattern_img/pattern_3.png)
+
+#### Pattern-4
+![Star Pattern](pattern_img/pattern_4.png)
+
+#### Pattern-5
+![Star Pattern](pattern_img/pattern_5.png)
+
+#### Pattern-6
+![Star Pattern](pattern_img/pattern_6.png)
+
+#### Pattern-7
+![Star Pattern](pattern_img/pattern_7.png)
+
+#### Pattern-8
+![Star Pattern](pattern_img/pattern_8.png)
+
+#### Pattern-9
+![Star Pattern](pattern_img/pattern_9.png)
+
+#### Pattern-10
+![Star Pattern](pattern_img/pattern_10.png)
+
+#### Pattern-11
+![Star Pattern](pattern_img/pattern_11.png)
+
+#### Pattern-12
+![Star Pattern](pattern_img/pattern_12.png)
+
+#### Pattern-13
+![Star Pattern](pattern_img/pattern_13.png)
+
+#### Pattern-14
+![Star Pattern](pattern_img/pattern_14.png)
+
+#### Pattern-15
+![Star Pattern](pattern_img/pattern_15.png)
+
+#### Pattern-16
+![Star Pattern](pattern_img/pattern_16.png)
+
+#### Pattern-17
+![Star Pattern](pattern_img/pattern_17.png)
+
+#### Pattern-18
+![Star Pattern](pattern_img/pattern_18.png)
+
+#### Pattern-19
+![Star Pattern](pattern_img/pattern_19.png)
+
+#### Pattern-20
+![Star Pattern](pattern_img/pattern_20.png)
+
+#### Pattern-21
+![Star Pattern](pattern_img/pattern_21.png)
+
+#### Pattern-22
+![Star Pattern](pattern_img/pattern_22.png)
