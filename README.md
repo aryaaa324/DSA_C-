@@ -659,34 +659,201 @@ int c = a + b; // auxiliary space
 
 #### Pattern-1
 ![Star Pattern](pattern_img/pattern_1.png)
+**Code**
+```cpp
+#include <iostream>
+using namespace std;
 
+int main() {
+    for (int i = 0; i < 5; ++i) {
+        cout << "*****" << endl;
+    }
+    return 0;
+}
+```
 #### Pattern-2
 ![Star Pattern](pattern_img/pattern_2.png)
+**Code**
+```cpp
+#include <iostream>
+using namespace std;
 
+int main() {
+    for (int i = 1; i <= 5; i++) {
+        for(int j=1; j<=i; j++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+}
+```
 #### Pattern-3
 ![Star Pattern](pattern_img/pattern_3.png)
+**Code**
+```cpp
+#include <iostream>
+using namespace std;
 
+int main() {
+    for (int i = 1; i <= 5; i++) {
+        for(int j=1; j<=i; j++){
+            cout<<j;
+        }
+        cout<<endl;
+    }
+
+}
+```
 #### Pattern-4
 ![Star Pattern](pattern_img/pattern_4.png)
+**Code**
+```cpp
+#include <iostream>
+using namespace std;
 
+int main() {
+    for (int i = 1; i <= 5; i++) {
+        for(int j=1; j<=i; j++){
+            cout<<i;
+        }
+        cout<<endl;
+    }
+
+}
+```
 #### Pattern-5
 ![Star Pattern](pattern_img/pattern_5.png)
+**Code**
+```cpp
+#include <iostream>
+using namespace std;
 
+int main() {
+    for (int i = 5; i >=1; i--) {
+        for(int j=i; j>=1; j--){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+
+}
+```
 #### Pattern-6
 ![Star Pattern](pattern_img/pattern_6.png)
+**Code**
+```cpp
+#include <iostream>
+using namespace std;
 
+int main() {
+    
+    for (int i = 5; i >=1; i--) {
+        for(int j=1; j<=i; j++){
+            cout<<j;
+        }
+        
+        cout<<endl;
+    }
+
+}
+```
 #### Pattern-7
 ![Star Pattern](pattern_img/pattern_7.png)
+**Code**
+```cpp
 
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n = 5;
+    for(int i = 1; i <= n; i++) {
+        // Print spaces
+        for(int j = 1; j <= n - i; j++)
+            cout << " ";
+        // Print stars
+        for(int j = 1; j <= 2*i - 1; j++)
+            cout << "*";
+        cout << endl;
+    }
+    return 0;
+}
+```
 #### Pattern-8
 ![Star Pattern](pattern_img/pattern_8.png)
+**Code**
+```cpp
 
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n = 5;
+    for(int i = n; i >= 1; i--) {
+        // Print spaces
+        for(int j = 1; j <= n - i; j++)
+            cout << " ";
+        // Print stars
+        for(int j = 1; j <= 2*i - 1; j++)
+            cout << "*";
+        cout << endl;
+    }
+    return 0;
+}
+```
 #### Pattern-9
 ![Star Pattern](pattern_img/pattern_9.png)
+**Code**
+```cpp
 
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n = 5;
+
+    // Upper part
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= n - i; j++) cout << " ";
+        for(int j = 1; j <= 2*i - 1; j++) cout << "*";
+        cout << endl;
+    }
+
+    // Lower part
+    for(int i = n - 1; i >= 1; i--) {
+        for(int j = 1; j <= n - i; j++) cout << " ";
+        for(int j = 1; j <= 2*i - 1; j++) cout << "*";
+        cout << endl;
+    }
+
+    return 0;
+}
+```
 #### Pattern-10
 ![Star Pattern](pattern_img/pattern_10.png)
+**Code**
+```cpp
+#include <iostream>
+using namespace std;
 
+int main() {
+    int n = 5;
+
+    // Upper part
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= i; j++) cout << "*";
+        cout << endl;
+    }
+
+    // Lower part
+    for(int i = n - 1; i >= 1; i--) {
+        for(int j = 1; j <= i; j++) cout << "*";
+        cout << endl;
+    }
+
+    return 0;
+}
+```
 #### Pattern-11
 ![Star Pattern](pattern_img/pattern_11.png)
 
