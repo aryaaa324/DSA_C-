@@ -1230,3 +1230,55 @@ A vector is like a resizable array. It can grow or shrink in size when you add o
 vector<int> v;       // Vector of integers
 vector<string> names; // Vector of strings
 ```
+### 🔹 Common Functions (C++ STL Vector)
+
+| Function         | Purpose                              |
+|------------------|---------------------------------------|
+| `push_back(x)`   | Adds `x` at the end                   |
+| `pop_back()`     | Removes the last element              |
+| `insert(pos, x)` | Inserts `x` at position `pos`         |
+| `erase(pos)`     | Removes element at position `pos`     |
+| `front()`        | Returns the first element             |
+| `back()`         | Returns the last element              |
+| `clear()`        | Deletes all elements                  |
+| `empty()`        | Checks if the vector is empty         |
+| `size()`         | Returns the number of elements        |
+| `begin()/end()`  | Iterators for start and end positions |
+
+**Example**
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> v;
+
+    // Add elements
+    v.push_back(10);
+    v.push_back(20);
+
+    // Show elements
+    cout << "Vector: ";
+    for (int i : v)
+        cout << i << " ";
+
+    // Remove last element
+    v.pop_back();
+
+    cout << "\nAfter pop_back: ";
+    for (int i : v)
+        cout << i << " ";
+
+    return 0;
+}
+
+```
+
+**Output**
+```cpp
+Vector: 10 20 
+After pop_back: 10
+
+```
+----
