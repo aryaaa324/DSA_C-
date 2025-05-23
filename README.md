@@ -1361,3 +1361,373 @@ Is set empty? Yes
 
 ```
 ----
+
+###  📍 unordered_multiset
+
+- 🔹 Stores duplicate values (like multiset), but in no particular order.
+- 🔹 Fast for lookup and insertion.
+
+
+### 🧮 C++ STL unordered_multicast
+
+| Operation   | Purpose                                          |
+| ----------- | ------------------------------------------------ |
+| `insert(x)` | Adds element `x` (duplicates allowed, unordered) |
+| `count(x)`  | Count of `x`                                     |
+| `erase(x)`  | Removes all `x`                                  |
+| `find(x)`   | Iterator to any `x`                              |
+| `clear()`   | Remove all elements                              |
+| `size()`    | Number of elements                               |
+
+  
+**Example**
+```cpp
+#include <iostream>
+#include <unordered_multiset>
+using namespace std;
+
+int main() {
+    unordered_multiset<int> ums = {2, 3, 2, 5};
+    for (int x : ums) cout << x << " ";
+    return 0;
+}
+
+```
+------
+###  📍 multiset
+- 🔹 Stores elements in sorted order.
+- 🔹 Allows duplicate elements.
+
+### 🧮 C++ STL multiset
+| Operation           | Purpose                          |
+| ------------------- | -------------------------------- |
+| `insert(x)`         | Adds `x` (keeps elements sorted) |
+| `count(x)`          | Count of `x`                     |
+| `erase(x)`          | Removes all `x`                  |
+| `find(x)`           | Iterator to first `x`            |
+| `begin()` / `end()` | Iterators for traversal          |
+
+  
+**Example**
+```cpp
+#include <iostream>
+#include <set>
+using namespace std;
+
+int main() {
+    multiset<int> ms = {3, 1, 2, 2};
+    for (int x : ms) cout << x << " "; // Output: 1 2 2 3
+    return 0;
+}
+
+
+```
+------
+
+###  📍 unordered_map
+- 🔹 Stores key-value pairs.
+- 🔹 No particular order. Fast access.
+- 🔹 Keys are unique.
+
+### 🧮 C++ STL unordered_map
+
+| Operation      | Purpose                 |
+| -------------- | ----------------------- |
+| `m[key] = val` | Insert/update key-value |
+| `find(key)`    | Iterator to key         |
+| `erase(key)`   | Removes key             |
+| `count(key)`   | 1 if exists, else 0     |
+| `clear()`      | Remove all entries      |
+
+  
+**Example**
+```cpp
+#include <unordered_map>
+using namespace std;
+
+unordered_map<string, int> umap;
+umap["apple"] = 10;
+umap["banana"] = 5;
+
+
+```
+------
+
+###  📍 unordered_multimap
+🔹 Stores key-value pairs like unordered_map, but allows duplicate keys.
+
+### 🧮 C++ STL unordered_multimap
+
+| Operation        | Purpose                             |
+| ---------------- | ----------------------------------- |
+| `insert({k,v})`  | Insert duplicate keys (unordered)   |
+| `equal_range(k)` | Range of values for key             |
+| `find(k)`        | Iterator to one of the key’s values |
+
+  
+**Example**
+```cpp
+#include <unordered_map>
+using namespace std;
+
+unordered_multimap<string, int> ump;
+ump.insert({"apple", 10});
+ump.insert({"apple", 20});
+
+
+```
+------
+
+###  📍 queue
+🔹 FIFO (First In First Out) structure.
+
+🔹 Insert at the back, remove from the front.
+
+### 🧮 C++ STL queue
+
+| Operation | Purpose                 |
+| --------- | ----------------------- |
+| `push(x)` | Add to back             |
+| `pop()`   | Remove front            |
+| `front()` | Access front            |
+| `empty()` | Check if queue is empty |
+
+**Example**
+```cpp
+#include <queue>
+using namespace std;
+
+queue<int> q;
+q.push(1);
+q.push(2);
+q.pop();  // Removes 1
+
+
+```
+------
+
+###  📍 stack
+🔹 LIFO (Last In First Out) structure.
+
+🔹 Insert and remove at the top.
+
+### 🧮 C++ STL stack
+
+| Operation | Purpose                 |
+| --------- | ----------------------- |
+| `push(x)` | Push on top             |
+| `pop()`   | Remove top              |
+| `top()`   | View top                |
+| `empty()` | Check if stack is empty |
+
+
+  
+**Example**
+```cpp
+#include <stack>
+using namespace std;
+
+stack<int> s;
+s.push(10);
+s.pop(); // Removes 10
+
+
+
+```
+------
+
+###  📍 deque
+🔹 Double-ended queue.
+
+🔹 Insert and remove from both front and back.
+
+| Operation            | Purpose         |
+| -------------------- | --------------- |
+| `push_front(x)`      | Insert at front |
+| `push_back(x)`       | Insert at back  |
+| `pop_front()`        | Remove front    |
+| `pop_back()`         | Remove back     |
+| `front()` / `back()` | Access ends     |
+
+  
+**Example**
+```cpp
+#include <deque>
+using namespace std;
+
+deque<int> dq;
+dq.push_front(1);
+dq.push_back(2);
+dq.pop_back();  // Removes 2
+
+
+
+```
+------
+
+###  📍 priority_queue
+🔹 A max-heap by default (largest element on top).
+
+🔹 Used for getting max elements efficiently.
+
+| Operation | Purpose                           |
+| --------- | --------------------------------- |
+| `push(x)` | Add to queue                      |
+| `top()`   | View top element (max by default) |
+| `pop()`   | Remove top                        |
+| `empty()` | Check if empty                    |
+
+
+  
+**Example**
+```cpp
+#include <queue>
+using namespace std;
+
+priority_queue<int> pq;
+pq.push(5);
+pq.push(10);
+cout << pq.top(); // 10
+
+```
+------
+
+
+###  📍 multimap
+🔹 Like a map but allows duplicate keys.
+
+🔹 Sorted based on keys.
+
+| Operation        | Purpose                               |
+| ---------------- | ------------------------------------- |
+| `insert({k,v})`  | Duplicate keys allowed, sorted by key |
+| `equal_range(k)` | Returns all pairs with key `k`        |
+
+**Example**
+```cpp
+#include <map>
+using namespace std;
+
+multimap<string, int> mm;
+mm.insert({"apple", 1});
+mm.insert({"apple", 2});
+
+
+
+
+```
+------
+
+###  📍 list
+🔹 Doubly linked list.
+
+🔹 Fast insertion and deletion from anywhere.
+
+| Operation        | Purpose            |
+| ---------------- | ------------------ |
+| `push_back(x)`   | Add to end         |
+| `push_front(x)`  | Add to front       |
+| `insert(pos, x)` | Insert at position |
+| `remove(x)`      | Remove all `x`     |
+
+  
+**Example**
+```cpp
+#include <list>
+using namespace std;
+
+list<int> l;
+l.push_back(1);
+l.push_front(2);
+
+```
+------
+
+###  📍 next_permutation()
+🔹 Changes array to the next lexicographic permutation.
+ 
+**Example**
+```cpp
+#include <algorithm>
+using namespace std;
+
+vector<int> v = {1, 2, 3};
+next_permutation(v.begin(), v.end());  // v = {1, 3, 2}
+
+
+```
+------
+
+###  📍 __builtin_popcount()
+🔹 Counts the number of 1s in binary representation of a number.
+
+🔹 Very useful in bit manipulation problems.
+  
+**Example**
+```cpp
+#include <iostream>
+using namespace std;
+
+int x = 7; // 111 in binary
+cout << __builtin_popcount(x); // Output: 3
+
+
+
+```
+------
+
+
+### 📍 sort()
+🔹 Sorts a container in ascending order.
+
+🔹 Can pass custom comparator for descending.
+
+  
+**Example**
+```cpp
+#include <algorithm>
+vector<int> v = {3, 1, 2};
+sort(v.begin(), v.end()); // v = {1, 2, 3}
+
+```
+------
+
+
+### 📍 min_element()
+🔹 Returns iterator to the minimum element in the range.                
+
+  
+**Example**
+```cpp
+#include <algorithm>
+vector<int> v = {5, 1, 3};
+cout << *min_element(v.begin(), v.end()); // 1
+
+
+```
+------
+
+### 📍 max_element()
+🔹 Returns iterator to the maximum element in the range.             
+
+  
+**Example**
+```cpp
+#include <algorithm>
+vector<int> v = {5, 1, 3};
+cout << *max_element(v.begin(), v.end()); // 5
+
+
+
+```
+### 🧠 STL Utility Functions
+| Function                | Description                       | Example                                |
+| ----------------------- | --------------------------------- | -------------------------------------- |
+| `next_permutation()`    | Next lexicographic permutation    | `next_permutation(v.begin(), v.end())` |
+| `__builtin_popcount(x)` | Counts set bits in binary of `x`  | `__builtin_popcount(7)` → `3`          |
+| `sort()`                | Sorts elements in ascending order | `sort(v.begin(), v.end())`             |
+| `min_element()`         | Iterator to smallest element      | `*min_element(v.begin(), v.end())`     |
+| `max_element()`         | Iterator to largest element       | `*max_element(v.begin(), v.end())`     |
+
+
+-----
