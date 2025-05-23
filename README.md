@@ -1731,3 +1731,103 @@ cout << *max_element(v.begin(), v.end()); // 5
 
 
 -----
+
+## Lec-4 : Know the Basic Maths 
+-----
+
+### Count digits in a number
+🔢 Problem Statement
+- Given an integer N, count how many digits it has.
+
+**✅ Examples:**
+- Input: 12345 → Output: 5 (since it has 5 digits)
+- Input: 7789 → Output: 4 (since it has 4 digits)
+
+**💡 Approach 1: Brute Force (Using Loop)**
+🧠 Intuition:
+- We can repeatedly divide the number by 10, and each time we do that, we remove one digit from the end.
+- We keep doing this until the number becomes 0 and count how many times this happens.
+
+**🧮 Steps:**
+- Initialize a counter = 0.
+- While N > 0:
+- Increment counter by 1.
+- Remove last digit of N by doing N = N / 10.
+- Return the counter.
+
+**🧾 C++ Code:**
+```cpp
+#include <iostream>
+using namespace std;
+
+int countDigits(int n) {
+    int cnt = 0;
+    while(n > 0) {
+        cnt++;         // count this digit
+        n = n / 10;     // remove the last digit
+    }
+    return cnt;
+}
+
+int main() {
+    int N = 12345;
+    cout << "Number: " << N << endl;
+    cout << "Digit count: " << countDigits(N) << endl;
+    return 0;
+}
+```
+**✅ Output:**
+```cpp
+Number: 12345
+Digit count: 5
+```
+
+**⏱️ Time Complexity: O(log N)**
+Because each time we divide by 10, the number reduces significantly.
+
+**🧠 Space Complexity: O(1)**
+Just one counter variable is used.
+
+**💡 Optimal (Using Logarithm)**
+🧠 Intuition:
+- Mathematically, the number of digits in a number N is:
+- 📌 digits = floor(log10(N)) + 1
+
+**🧮 Why?**
+
+- log10(N) gives us how many digits fit into powers of 10.
+- Adding 1 accounts for the total number of digits.
+- We take floor by converting it to an int in C++.
+'⚠️ Important: This only works for positive numbers (N > 0). For N = 0, you can return 1 manually.'
+
+**🧾 C++ Code:**
+```cpp
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int countDigits(int n) {
+    if (n == 0) return 1;  // Special case
+    return (int)(log10(n) + 1);
+}
+
+int main() {
+    int N = 12345;
+    cout << "Number: " << N << endl;
+    cout << "Digit count: " << countDigits(N) << endl;
+    return 0;
+}
+
+```
+**✅ Output:**
+```cpp
+Number: 12345
+Digit count: 5
+
+```
+
+**⏱️ Time Complexity: O(log N)**
+Time Complexity: O(1) (since log is a direct operation)
+
+**🧠 Space Complexity: O(1)**
+Space Complexity: O(1)
