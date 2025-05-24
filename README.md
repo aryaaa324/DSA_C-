@@ -2877,5 +2877,142 @@ prints 1 → return
 
 ---
 
+### Sum of First N Natural Numbers
+#### ✅ Problem Statement:
 
+Given a number **N**, find the sum of the first N natural numbers.
+Formula:
+
+$$
+\text{Sum} = 1 + 2 + 3 + \ldots + N
+$$
+
+-
+
+#### 📌 Examples:
+
+* Input: `N = 5` → Output: `15` (1+2+3+4+5)
+* Input: `N = 6` → Output: `21` (1+2+3+4+5+6)
+
+
+#### ✅ Solutions:
+
+#### **1. Iterative Loop Approach**
+
+**Logic:** Add numbers from 1 to N using a loop.
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve(int n) {
+    int sum = 0;
+    for (int i = 1; i <= n; i++) {
+        sum += i;
+    }
+    cout << "The sum of the first " << n << " numbers is: " << sum << endl;
+}
+
+int main() {
+    solve(5);
+    solve(6);
+}
+```
+
+* **Time Complexity:** O(N)
+* **Space Complexity:** O(1)
+
+
+
+#### **2. Formula-Based Approach**
+
+**Formula:**
+
+$$
+\text{Sum} = \frac{N(N + 1)}{2}
+$$
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve(int N) {
+    int sum = N * (N + 1) / 2;
+    cout << "The sum of the first " << N << " numbers is: " << sum << endl;
+}
+
+int main() {
+    solve(5);
+    solve(6);
+}
+```
+
+* **Time Complexity:** O(1)
+* **Space Complexity:** O(1)
+
+
+#### **3. Recursive – Parameterized Way**
+
+**Logic:** Use recursion, passing sum and index as parameters.
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+void func(int i, int sum) {
+    if (i < 1) {
+        cout << sum << endl;
+        return;
+    }
+    func(i - 1, sum + i);
+}
+
+int main() {
+    int n = 3;
+    func(n, 0);
+}
+```
+
+* **Time Complexity:** O(N)
+* **Space Complexity:** O(N) (due to recursion stack)
+
+
+#### **4. Recursive – Functional Way**
+
+**Logic:** Return `n + func(n-1)` until `n == 0`.
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+int func(int n) {
+    if (n == 0)
+        return 0;
+    return n + func(n - 1);
+}
+
+int main() {
+    int n = 3;
+    cout << func(n) << endl;
+}
+```
+
+* **Time Complexity:** O(N)
+* **Space Complexity:** O(N) (due to recursion stack)
+
+
+#### ✅ Best Approach?
+
+| Approach                  | Time | Space | Use When                        |
+| ------------------------- | ---- | ----- | ------------------------------- |
+| Iterative Loop            | O(N) | O(1)  | Simple, easy to understand      |
+| Formula-based             | O(1) | O(1)  | **Best for performance**        |
+| Recursive (Parameterized) | O(N) | O(N)  | For learning/recursion practice |
+| Recursive (Functional)    | O(N) | O(N)  | Elegant recursion, learning use |
+
+
+
+If you're solving coding problems for interviews or performance-critical applications, always prefer the **formula-based approach**. For **learning recursion**, the recursive solutions are great.
+
+---
 
