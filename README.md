@@ -2502,4 +2502,97 @@ When base condition is met, the functions start returning back in reverse order.
 - Think of recursion as solving a smaller sub-problem each time.
 - Ideal for problems like factorials, fibonacci, tree traversals, etc.
 
+----
 
+### Print Name N Times using Recursion
+
+#### 🧠 Problem Statement
+You are given a number n, and you have to print your name n times using recursion.
+
+> ✅ Example:
+> If n = 3, output:
+
+```cpp
+Raj
+Raj
+Raj
+```
+
+#### 💭 Thought Process
+- Since we need to repeat something n times, we must keep track of how many times it has been printed.
+
+- But recursion doesn’t automatically count like a loop.
+- So, we use an extra parameter in the function to track how many times we've already printed the name.
+
+#### 🔧 Base Condition
+If our counter (i) becomes greater than n, we stop the recursion.
+
+#### 🧾 C++ Code (Simple)
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+void printName(int i, int n) {
+    // 🛑 Base Condition
+    if (i > n) return;
+
+    // 🖨️ Print Name
+    cout << "Raj" << endl;
+
+    // 🔁 Recursive Call with incremented count
+    printName(i + 1, n);
+}
+
+int main() {
+    int n;
+    cout << "Enter how many times to print your name: ";
+    cin >> n;
+
+    // Start from 1
+    printName(1, n);
+
+    return 0;
+}
+
+```
+
+#### 🖥️ Sample Output
+```cpp
+Enter how many times to print your name: 3
+Raj
+Raj
+Raj
+```
+
+#### 🌲 Recursion Tree (for n = 3)
+```cpp
+printName(1, 3)
+  ↓
+printName(2, 3)
+  ↓
+printName(3, 3)
+  ↓
+printName(4, 3) → base case met, return
+```
+
+#### 📊 GitHub README-style Table Summary
+| 🧩 Concept              | 🔍 Description                                                       |
+| ----------------------- | -------------------------------------------------------------------- |
+| **Function Parameters** | Used to keep track of the number of times name is printed (counter). |
+| **Base Condition**      | Stops recursion when `i > n`.                                        |
+| **Recursive Call**      | Calls the same function with `i + 1` to continue printing.           |
+| **Recursion Tree**      | Shows how the function progresses and when it stops.                 |
+| **Time Complexity**     | O(n) – One function call per print.                                  |
+| **Space Complexity**    | O(n) – Due to function call stack space.                             |
+
+#### 🧠 Analogy (Real Life)
+> Think of a child stacking blocks one after the other 🧱.
+> He keeps adding until he reaches n blocks, then stops.
+> Each block is like a function call — and the child stops when i > n.
+
+#### 📝 Key Takeaways
+- Use parameters in recursive functions to track the current state.
+- Always write a base condition to prevent infinite recursion.
+- Recursion is not just for complex problems — it can do simple loops too!
+- Practice helps strengthen your understanding of flow and function calls.
+----
