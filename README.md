@@ -2597,10 +2597,6 @@ printName(4, 3) → base case met, return
 - Practice helps strengthen your understanding of flow and function calls.
 ----
 
-Here’s a **detailed explanation** of how to **Print 1 to N using Recursion** in **C++**, in simple language — along with both **forward** and **backward** (backtracking) recursive approaches, and a **GitHub README-style table** for quick reference.
-
----
-
 ### 🔢 Print 1 to N using Recursion
 
 
@@ -2750,5 +2746,136 @@ print 3
 * You can choose between **forward** and **backward** depending on the order you need.
 
 ---
+
+
+### Print N to 1 using Recursion
+#### ✅ Problem Statement
+
+**Print all numbers from `N` to `1` using recursion without using global variables.**
+
+
+
+#### ✅ Standard Approach (Forward Recursion)
+
+##### 🧠 Logic:
+
+* Start with `i = N`.
+* Print `i`.
+* Recursively call the function with `i - 1`.
+* **Base condition**: if `i < 1`, return.
+
+#### ✅ Code (C++)
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+void func(int i) {
+    if (i < 1) return;
+    cout << i << endl;
+    func(i - 1);
+}
+
+int main() {
+    int n = 4;
+    func(n);
+    return 0;
+}
+```
+
+#### 🧾 Output:
+
+```
+4
+3
+2
+1
+```
+
+#### 🔍 Dry Run:
+
+```
+func(4)
+↓
+prints 4 → func(3)
+↓
+prints 3 → func(2)
+↓
+prints 2 → func(1)
+↓
+prints 1 → func(0) → return
+```
+
+
+#### ✅ Alternate Approach (Backtracking)
+
+#### 🧠 Logic:
+
+* Start with `i = 1`, and go up to `N`.
+* First make recursive call with `i + 1`.
+* Then print `i` (this results in reversed order).
+
+#### ✅ Code (C++)
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+void func(int i, int n) {
+    if (i > n) return;
+    func(i + 1, n);
+    cout << i << endl;
+}
+
+int main() {
+    int n = 4;
+    func(1, n);
+    return 0;
+}
+```
+
+#### 🧾 Output:
+
+```
+4
+3
+2
+1
+```
+
+#### 🔍 Dry Run:
+
+```
+func(1,4)
+↓
+func(2,4)
+↓
+func(3,4)
+↓
+func(4,4)
+↓
+func(5,4) → return
+prints 4 → return
+prints 3 → return
+prints 2 → return
+prints 1 → return
+```
+
+
+#### ✅ Time and Space Complexity
+
+* **Time Complexity**: `O(N)` – One function call and one print per integer.
+* **Space Complexity**: `O(N)` – Recursion stack depth is `N`.
+
+
+#### 🏁 Summary
+
+| Approach                 | Direction | When is `print()` executed? | Output Order |
+| ------------------------ | --------- | --------------------------- | ------------ |
+| Standard                 | Top-Down  | Before recursive call       | N to 1       |
+| Alternate (Backtracking) | Bottom-Up | After recursive call        | N to 1       |
+
+---
+
 
 
