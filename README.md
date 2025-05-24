@@ -2307,3 +2307,112 @@ int main() {
 
 > 📌 Tip:
 > If performance matters and you're dealing with large numbers, use the optimal (√N) method.
+
+-----
+
+### Print All Divisors 
+📌 Definition:
+A divisor of a number N is any positive integer that divides N completely (without any remainder).
+
+**✅ Examples:**
+| Input | Output               |
+| ----- | -------------------- |
+| 36    | 1 2 3 4 6 9 12 18 36 |
+| 12    | 1 2 3 4 6 12         |
+
+**📚 Methods to Find GCD in C++**
+
+#### 1. Brute Force Approach
+💡 Idea:
+Check all numbers from 1 to N to see how many divide N.
+If exactly 2 numbers divide it → it's prime.
+
+**🧾 C++ Code:**
+```cpp
+#include <iostream>
+using namespace std;
+
+bool isPrimeBrute(int n) {
+    int count = 0;
+
+    for (int i = 1; i <= n; i++) {
+        if (n % i == 0) {
+            count++;
+        }
+    }
+
+    return count == 2;
+}
+
+int main() {
+    int n = 10;
+    if (isPrimeBrute(n)) {
+        cout << n << " is a prime number." << endl;
+    } else {
+        cout << n << " is not a prime number." << endl;
+    }
+    return 0;
+}
+
+
+```
+#### Time and Space Complexity 
+| Aspect           | Complexity |
+| ---------------- | ---------- |
+| Time Complexity  | O(N)       |
+| Space Complexity | O(1)       |
+
+
+#### 2. Optimal Approach (Using √N)
+
+💡 Logic
+- Any factor bigger than √N must pair with a smaller factor.
+So we:
+- Loop from 1 to √N
+- Count factors
+- If exactly 2, then it's prime
+
+**🧾 C++ Code:**
+```cpp
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool isPrimeOptimal(int n) {
+    if (n <= 1) return false;
+
+    int count = 0;
+
+    for (int i = 1; i <= sqrt(n); i++) {
+        if (n % i == 0) {
+            if (n / i == i)  // Perfect square
+                count += 1;
+            else
+                count += 2;
+        }
+    }
+
+    return count == 2;
+}
+
+int main() {
+    int n = 1483;
+    if (isPrimeOptimal(n)) {
+        cout << n << " is a prime number." << endl;
+    } else {
+        cout << n << " is not a prime number." << endl;
+    }
+    return 0;
+}
+
+
+```
+
+#### Time and Space Complexity 
+| Aspect           | Complexity |
+| ---------------- | ---------- |
+| Time Complexity  | O(√N)      |
+| Space Complexity | O(1)       |
+
+
+----
