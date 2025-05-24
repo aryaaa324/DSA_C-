@@ -2596,3 +2596,159 @@ printName(4, 3) → base case met, return
 - Recursion is not just for complex problems — it can do simple loops too!
 - Practice helps strengthen your understanding of flow and function calls.
 ----
+
+Here’s a **detailed explanation** of how to **Print 1 to N using Recursion** in **C++**, in simple language — along with both **forward** and **backward** (backtracking) recursive approaches, and a **GitHub README-style table** for quick reference.
+
+---
+
+### 🔢 Print 1 to N using Recursion
+
+
+
+#### ✅ Problem
+
+> Given an integer `n`, print all numbers from `1` to `n` using recursion, **without using loops or global variables**.
+
+
+#### 🧠 Key Concepts
+
+* **Recursion** is when a function calls itself to solve a smaller subproblem.
+* Use function parameters to **track the count** instead of global variables.
+* We need a **base condition** to prevent infinite calls.
+
+
+#### ✅ Approach 1: Forward Recursion
+
+##### 📜 Idea
+
+* Start from 1.
+* Keep printing and move to the next number (i+1) until you reach `n`.
+
+
+#### 👨‍💻 Code (Forward)
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+void print1toN(int i, int n) {
+    // Base condition to stop recursion
+    if (i > n) return;
+
+    // Print current number
+    cout << i << endl;
+
+    // Recursive call to next number
+    print1toN(i + 1, n);
+}
+
+int main() {
+    int n;
+    cout << "Enter n: ";
+    cin >> n;
+
+    print1toN(1, n);
+
+    return 0;
+}
+```
+
+
+
+#### 🌲 Recursion Tree (for n = 3)
+
+```
+print1toN(1, 3)
+  → prints 1
+  ↓
+print1toN(2, 3)
+  → prints 2
+  ↓
+print1toN(3, 3)
+  → prints 3
+  ↓
+print1toN(4, 3)
+  → returns (base case hit)
+```
+
+#### 🔁 Alternate Approach: Backward Recursion (Backtracking)
+
+#### 📜 Idea
+
+* Start from `n` and go backward.
+* First solve the smaller subproblem (print 1 to n-1).
+* Then print the current number (`i`) **after** the recursive call.
+
+
+#### 👨‍💻 Code (Backtracking)
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+void print1toN_Backtrack(int i, int n) {
+    // Base condition
+    if (i < 1) return;
+
+    // First solve smaller problem
+    print1toN_Backtrack(i - 1, n);
+
+    // Print after recursion
+    cout << i << endl;
+}
+
+int main() {
+    int n;
+    cout << "Enter n: ";
+    cin >> n;
+
+    print1toN_Backtrack(n, n);
+
+    return 0;
+}
+```
+
+
+
+#### 🌲 Recursion Tree (for n = 3)
+
+```
+print1toN_Backtrack(3, 3)
+  ↓
+print1toN_Backtrack(2, 3)
+  ↓
+print1toN_Backtrack(1, 3)
+  ↓
+print1toN_Backtrack(0, 3) → base case hit, return
+  ↑
+print 1
+  ↑
+print 2
+  ↑
+print 3
+```
+
+
+
+#### 📊 GitHub README-style Summary Table
+
+| 🧩 Concept              | 🔍 Description                                                                   |
+| ----------------------- | -------------------------------------------------------------------------------- |
+| **Function Parameters** | Used to track the current number being printed.                                  |
+| **Base Condition**      | `i > n` (Forward) or `i < 1` (Backtrack) to stop recursion.                      |
+| **Recursive Call**      | Calls function with updated `i` to continue.                                     |
+| **Output Order**        | Forward: `1 → 2 → 3`<br> Backtracking: `1 ← 2 ← 3` (same output, different flow) |
+| **Time Complexity**     | `O(N)` – One function call per number printed.                                   |
+| **Space Complexity**    | `O(N)` – Call stack holds N function calls.                                      |
+
+
+
+#### 🎯 Takeaway
+
+* Recursion helps simulate loops without using them.
+* Base condition is crucial to avoid infinite calls.
+* You can choose between **forward** and **backward** depending on the order you need.
+
+---
+
+
