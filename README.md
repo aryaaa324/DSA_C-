@@ -3016,3 +3016,105 @@ If you're solving coding problems for interviews or performance-critical applica
 
 ---
 
+
+### Factorial of a Number : Iterative and Recursive
+
+#### ✅ **Problem Statement**
+
+Given a **positive integer `X`**, compute its **factorial**:
+    `X! = X × (X-1) × (X-2) × ... × 1`
+
+
+#### ✅ **Examples**
+
+* **Input:** `X = 5` → **Output:** `120` (because 5 × 4 × 3 × 2 × 1 = 120)
+* **Input:** `X = 3` → **Output:** `6` (because 3 × 2 × 1 = 6)
+
+
+
+#### 🚀 Solution 1: **Iterative Approach**
+
+#### 🔹 **Approach:**
+
+Use a loop from 1 to X and multiply the result cumulatively.
+
+#### 🔹 **Code (C++):**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int factorial(int X) {
+    int ans = 1;
+    for (int i = 1; i <= X; i++) {
+        ans *= i;
+    }
+    return ans;
+}
+
+int main() {
+    int X = 5;
+    cout << "The factorial of " << X << " is " << factorial(X);
+    return 0;
+}
+```
+
+#### 🔹 **Output:**
+
+```
+The factorial of 5 is 120
+```
+
+#### 🔹 **Time Complexity:** `O(X)`
+
+#### 🔹 **Space Complexity:** `O(1)`
+
+
+
+#### 🔁 Solution 2: **Recursive Approach**
+
+#### 🔹 **Approach:**
+
+Use the recurrence:
+    `factorial(n) = n * factorial(n - 1)`
+with base case:
+    `factorial(0) = 1`
+
+#### 🔹 **Code (C++):**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int factorial(int n) {
+    if (n == 0)
+        return 1;
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int n = 3;
+    cout << factorial(n);
+    return 0;
+}
+```
+
+### 🔹 **Output:**
+
+```
+6
+```
+
+#### 🔹 **Time Complexity:** `O(N)`
+
+#### 🔹 **Space Complexity:** `O(N)` (due to recursive call stack)
+
+
+#### 💡 Which One to Use?
+
+* **Iterative**: Preferred for large values of `X` to avoid stack overflow.
+* **Recursive**: Elegant and clean but limited by maximum recursion depth.
+
+---
+
+
