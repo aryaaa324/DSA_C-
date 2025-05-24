@@ -1831,3 +1831,170 @@ Time Complexity: O(1) (since log is a direct operation)
 
 **🧠 Space Complexity: O(1)**
 Space Complexity: O(1)
+
+-----
+
+### Reverse a number
+🔢 Problem Statement
+- Given a number N, reverse its digits.
+- If the number has trailing zeros, we ignore them.
+
+**✅ Examples:**
+- Example: 10400 → reverse is 401 (we don’t show leading zeros like 00401).
+
+  | Input | Output | Explanation               |
+| ----- | ------ | ------------------------- |
+| 12345 | 54321  | Digits reversed           |
+| 7789  | 9877   | Digits reversed           |
+| 10400 | 401    | Leading zeros are removed |
+| 500   | 5      | 005 becomes 5             |
+
+
+**Brute Force (Using Loop)**
+🧠 Intuition:
+- To reverse a number, we can:
+- Take the last digit using % 10
+- Add it to a rev variable (reversed number)
+- Multiply rev by 10 every time before adding the new digit
+- Remove the last digit from N using / 10
+  
+**🧮 Steps:**
+- Let’s say N = 12345
+- Start with rev = 0
+- Extract digits one by one from right to left:
+- rev = rev * 10 + (N % 10)
+- N = N / 10
+- Repeat until N > 0
+
+**🧾 C++ Code:**
+```cpp
+#include <iostream>
+using namespace std;
+
+int reverseNumber(int n) {
+    int rev = 0;
+
+    while(n > 0) {
+        int lastDigit = n % 10;        // Get last digit
+        rev = rev * 10 + lastDigit;    // Append to reverse
+        n = n / 10;                     // Remove last digit
+    }
+
+    return rev;
+}
+
+int main() {
+    int N = 12345;
+    cout << "Original Number: " << N << endl;
+    int reversed = reverseNumber(N);
+    cout << "Reversed Number: " << reversed << endl;
+    return 0;
+}
+
+```
+**✅ Output:**
+```cpp
+Original Number: 12345  
+Reversed Number: 54321
+
+```
+#### 🧪 Dry Run Example for N = 10400
+| Step | N     | Last Digit (`N % 10`) | Reversed (`rev * 10 + digit`) | New N (`N / 10`) |
+| ---- | ----- | --------------------- | ----------------------------- | ---------------- |
+| 1    | 10400 | 0                     | 0                             | 1040             |
+| 2    | 1040  | 0                     | 0                             | 104              |
+| 3    | 104   | 4                     | 0 \* 10 + 4 = 4               | 10               |
+| 4    | 10    | 0                     | 4 \* 10 + 0 = 40              | 1                |
+| 5    | 1     | 1                     | 40 \* 10 + 1 = 401            | 0 (end)          |
+
+**⏱️ Time and Space Complexity**
+| Metric           | Value    |
+| ---------------- | -------- |
+| Time Complexity  | O(log N) |
+| Space Complexity | O(1)     |
+
+-----
+
+
+### Palindrome
+🔢 Problem Statement
+A palindrome number is a number that reads the same forward and backward.
+📌 Example: 121, 1331, and 4554 are palindromes, but 123, 1256 are not.
+
+**✅ Examples:**
+- Example: 10400 → reverse is 401 (we don’t show leading zeros like 00401).
+
+| Input | Output | Explanation                    |
+| ----- | ------ | ------------------------------ |
+| 121   | true   | Reversed = 121 → same as input |
+| 1331  | true   | Reversed = 1331                |
+| 123   | false  | Reversed = 321 → not equal     |
+| 10401 | false  | Reversed = 10401 ≠ 10401       |
+| 4554  | true   | Reversed = 4554                |
+
+
+**Approach**
+
+| Step | Action                                                   |
+| ---- | -------------------------------------------------------- |
+| 1    | Store original number `n` in a temporary variable `dup`. |
+| 2    | Initialize `revNum = 0` to store the reversed number.    |
+| 3    | Loop while `n > 0`:                                      |
+| 3.1  | → Extract last digit: `ld = n % 10`                      |
+| 3.2  | → Append digit to reversed: `revNum = revNum * 10 + ld`  |
+| 3.3  | → Remove last digit: `n = n / 10`                        |
+| 4    | Compare: If `dup == revNum`, return true else false.     |
+
+
+**🧾 C++ Code:**
+```cpp
+#include <iostream>
+using namespace std;
+
+// Function to check if number is a palindrome
+bool palindrome(int n) {
+    int revNum = 0;
+    int dup = n;  // store original number
+
+    while (n > 0) {
+        int ld = n % 10;             // extract last digit
+        revNum = revNum * 10 + ld;   // build reverse number
+        n = n / 10;                  // remove last digit
+    }
+
+    // Compare reversed with original
+    return dup == revNum;
+}
+
+int main() {
+    int number = 4554;
+    if (palindrome(number)) {
+        cout << number << " is a palindrome." << endl;
+    } else {
+        cout << number << " is not a palindrome." << endl;
+    }
+    return 0;
+}
+
+
+```
+
+
+#### 🧪 Dry Run Example for N = 4554
+| Step | Original N | Last Digit (`n % 10`) | Reverse So Far (`revNum`)   | New N (`n / 10`) |
+| ---- | ---------- | --------------------- | --------------------------- | ---------------- |
+| 1    | 4554       | 4                     | 0 \* 10 + 4 = 4             | 455              |
+| 2    | 455        | 5                     | 4 \* 10 + 5 = 45            | 45               |
+| 3    | 45         | 5                     | 45 \* 10 + 5 = 455          | 4                |
+| 4    | 4          | 4                     | 455 \* 10 + 4 = 4554        | 0 (loop ends)    |
+|      |            |                       | ✅ 4554 == 4554 → Palindrome |                  |
+
+**⏱️ Time and Space Complexity**
+| Metric               | Value                                   |
+| -------------------- | --------------------------------------- |
+| **Time Complexity**  | O(log₁₀N)                               |
+| **Space Complexity** | O(1)                                    |
+| **Reason**           | Constant memory used, only integer math |
+
+
+-----
