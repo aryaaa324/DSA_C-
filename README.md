@@ -2105,7 +2105,7 @@ GCD of 20 and 15 is: 5
 
 -----
 
-### Armstrong Numbe
+### Armstrong Number
 ✅ What is an Armstrong Number?
 An Armstrong number (also called Narcissistic number) is a number equal to the sum of its digits each raised to the power of number of digits.
 **🔍 Example:**
@@ -2195,3 +2195,115 @@ int main() {
 > Space is constant since we only use a few variables.
 
 -----
+
+### Print All Divisors 
+📌 Definition:
+A divisor of a number N is any positive integer that divides N completely (without any remainder).
+
+**✅ Examples:**
+| Input | Output               |
+| ----- | -------------------- |
+| 36    | 1 2 3 4 6 9 12 18 36 |
+| 12    | 1 2 3 4 6 12         |
+
+**📚 Methods to Find GCD in C++**
+
+#### 1. Brute Force Approach
+💡 Idea:
+- Try all numbers from 1 to N. If i divides N, then it is a divisor.
+
+🧮 Time Complexity:
+- O(N) (You check all numbers up to N)
+
+🗃️ Space Complexity:
+- O(N) for storing divisors
+
+**🧾 C++ Code:**
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<int> printDivisors(int n) {
+    vector<int> divisors;
+    for (int i = 1; i <= n; ++i) {
+        if (n % i == 0) {
+            divisors.push_back(i);
+        }
+    }
+    return divisors;
+}
+
+int main() {
+    int n = 12;
+    vector<int> result = printDivisors(n);
+
+    cout << "Divisors of " << n << " are: ";
+    for (int val : result) {
+        cout << val << " ";
+    }
+    cout << endl;
+    return 0;
+}
+
+```
+
+#### 2. Optimal Approach (Using √N)
+💡 Idea:
+- If i divides n, then n / i is also a divisor.
+- So we only go till √n, and collect both i and n/i for each divisor.
+
+🧮 Time Complexity:
+- O(√N)
+
+🗃️ Space Complexity:
+- O(√N) to O(2√N) (if both i and n/i are added)
+
+**🧾 C++ Code:**
+```cpp
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <algorithm>
+using namespace std;
+
+vector<int> printDivisorsOptimized(int n) {
+    vector<int> divisors;
+
+    for (int i = 1; i <= sqrt(n); ++i) {
+        if (n % i == 0) {
+            divisors.push_back(i);
+            if (i != n / i) {
+                divisors.push_back(n / i);
+            }
+        }
+    }
+
+    // Optional: Sort the result
+    sort(divisors.begin(), divisors.end());
+    return divisors;
+}
+
+int main() {
+    int n = 36;
+    vector<int> result = printDivisorsOptimized(n);
+
+    cout << "Divisors of " << n << " are: ";
+    for (int val : result) {
+        cout << val << " ";
+    }
+    cout << endl;
+    return 0;
+}
+
+
+```
+
+#### Comparison Table 
+| Method       | Time Complexity | Space Complexity | Extra Notes                            |
+| ------------ | --------------- | ---------------- | -------------------------------------- |
+| Brute Force  | O(N)            | O(N)             | Easy to understand, slower for big N   |
+| Optimal (√N) | O(√N)           | O(√N) to O(2√N)  | Faster, uses math trick, needs sorting |
+
+> 📌 Tip:
+> If performance matters and you're dealing with large numbers, use the optimal (√N) method.
