@@ -2416,3 +2416,87 @@ int main() {
 
 
 ----
+
+## Lec-5 : Learn Basic Recurssion
+
+-----
+
+### 🔁 What is Recursion?
+- Recursion is a process where a function calls itself to solve a smaller version of the problem, until a certain condition is met.
+> Think of recursion like standing between two mirrors—your image keeps repeating. But to avoid going forever, you put a limit (base condition).
+
+### 🧨 Stack Overflow in Recursion
+- Every recursive call is placed on the call stack.
+- If there's no stop condition, the function keeps calling itself, and eventually the memory overflows, causing a Stack Overflow Error.
+
+### ✅ Base Condition
+- A base condition is like a STOP sign 🚦 for recursion. It prevents infinite calls.
+
+It tells the function:
+- 🔹 "Hey! If we reach this point, stop calling yourself and return."
+
+### 📘 Example: Print numbers from 0 to 2 using Recursion
+**🧾 C++ Code**
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int countNum = 0;
+
+void printNumbers() {
+    // 🛑 Base Condition
+    if (countNum == 3) return;
+
+    // 🖨️ Print current number
+    cout << countNum << endl;
+
+    // ➕ Increase the number
+    countNum++;
+
+    // 🔁 Recursive call
+    printNumbers();
+}
+
+int main() {
+    printNumbers();
+    return 0;
+}
+
+```
+**Output**
+```cpp
+0
+1
+2
+```
+
+### 🌲 Recursion Tree (Conceptual)
+Let’s visualize how recursion flows (when printNumbers() is called):
+```cpp
+printNumbers() → count = 0 → calls printNumbers()
+  ↳ printNumbers() → count = 1 → calls printNumbers()
+    ↳ printNumbers() → count = 2 → calls printNumbers()
+      ↳ count == 3 → returns
+```
+When base condition is met, the functions start returning back in reverse order.
+
+| 🧩 Concept             | 🔍 Description                                                             |
+| ---------------------- | -------------------------------------------------------------------------- |
+| **Recursion**          | A function calling itself to solve a problem.                              |
+| **Base Condition**     | A condition where the recursion stops.                                     |
+| **Stack Overflow**     | Error caused when recursion goes too deep without a stop condition.        |
+| **Recursive Function** | A function that solves a small part of the problem and calls itself again. |
+| **Recursive Tree**     | Visual diagram showing how recursive calls are made and returned.          |
+
+### 🧠 Real Life Analogy
+> Imagine Russian Dolls (Matryoshka) 🪆.
+> Each doll opens to reveal a smaller one. You continue until you hit the smallest doll—that's the base condition.
+> Now, you close each one step-by-step—this is the return from recursive calls.
+
+### 🔚 Key Takeaways
+- Always write a base condition in a recursive function.
+- Understand that recursive functions push calls into the stack.
+- Think of recursion as solving a smaller sub-problem each time.
+- Ideal for problems like factorials, fibonacci, tree traversals, etc.
+
+
