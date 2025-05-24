@@ -2104,3 +2104,94 @@ GCD of 20 and 15 is: 5
 ```
 
 -----
+
+### Armstrong Numbe
+✅ What is an Armstrong Number?
+An Armstrong number (also called Narcissistic number) is a number equal to the sum of its digits each raised to the power of number of digits.
+**🔍 Example:**
+```cpp
+Number = 153  
+Digits = 1, 5, 3  
+Number of digits = 3  
+
+Calculate:
+1³ + 5³ + 3³ = 1 + 125 + 27 = 153 ✅ (Armstrong)
+```
+| Number | Calculation              | Armstrong? |
+|--------|--------------------------|------------|
+| 153    | 1³ + 5³ + 3³ = 153       | ✅ Yes      |
+| 371    | 3³ + 7³ + 1³ = 371       | ✅ Yes      |
+| 9474   | 9⁴ + 4⁴ + 7⁴ + 4⁴ = 9474 | ✅ Yes      |
+| 280    | 2³ + 8³ + 0³ = 512 + 512 = 1024 ❌ | ❌ No       |
+
+#### 🔧 Step-by-Step Approach (Simple Language)
+💡 Logic:
+- Count how many digits are there in the number.
+- Break the number into digits.
+- Raise each digit to the power of the number of digits.
+- Add all those values.
+- If the total equals the original number → it’s an Armstrong number.
+
+1. Count digits in number.
+2. Loop over each digit:
+   - Extract digit using `% 10`
+   - Raise to power of total digits
+   - Add to sum
+3. Compare sum with original number.
+
+
+
+#### ✅ C++ Code (Simple Version)
+```cpp
+#include <iostream>
+#include <cmath> // for pow()
+using namespace std;
+
+bool isArmstrong(int num) {
+    int original = num;
+    int digits = 0;
+    int temp = num;
+
+    // Step 1: Count digits
+    while (temp > 0) {
+        digits++;
+        temp /= 10;
+    }
+
+    int sum = 0;
+    temp = num;
+
+    // Step 2: Extract digits and compute power
+    while (temp > 0) {
+        int lastDigit = temp % 10;
+        sum += pow(lastDigit, digits); // raise to power
+        temp /= 10; // remove last digit
+    }
+
+    // Step 3: Check Armstrong condition
+    return (sum == original);
+}
+
+int main() {
+    int number = 153;
+    if (isArmstrong(number)) {
+        cout << number << " is an Armstrong number.\n";
+    } else {
+        cout << number << " is not an Armstrong number.\n";
+    }
+    return 0;
+}
+
+```
+
+#### ⏱ Time and Space Complexity
+
+| Metric            | Complexity              |
+|-------------------|--------------------------|
+| Time Complexity   | O(log₁₀ N)               |
+| Space Complexity  | O(1)                     |
+
+> Time is based on the number of digits in N.  
+> Space is constant since we only use a few variables.
+
+-----
