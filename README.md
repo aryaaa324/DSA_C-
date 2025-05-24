@@ -2310,17 +2310,20 @@ int main() {
 
 -----
 
-### Print All Divisors 
+### Prime Number
 📌 Definition:
-A divisor of a number N is any positive integer that divides N completely (without any remainder).
+A prime number is a number that is only divisible by 1 and itself.
+That means it has exactly 2 divisors.
+| Number | Divisors    | Prime? |
+| ------ | ----------- | ------ |
+| 2      | 1, 2        | ✅ Yes  |
+| 3      | 1, 3        | ✅ Yes  |
+| 4      | 1, 2, 4     | ❌ No   |
+| 10     | 1, 2, 5, 10 | ❌ No   |
+| 13     | 1, 13       | ✅ Yes  |
 
-**✅ Examples:**
-| Input | Output               |
-| ----- | -------------------- |
-| 36    | 1 2 3 4 6 9 12 18 36 |
-| 12    | 1 2 3 4 6 12         |
 
-**📚 Methods to Find GCD in C++**
+**📚 Methods to Find Prime C++**
 
 #### 1. Brute Force Approach
 💡 Idea:
