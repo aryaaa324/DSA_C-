@@ -1998,3 +1998,109 @@ int main() {
 
 
 -----
+
+
+### GCD or HCF
+What is GCD?
+The Greatest Common Divisor (GCD) of two numbers is the largest number that can exactly divide both numbers without leaving any remainder.
+
+
+
+**✅ Examples:**
+- For example:
+```cpp
+GCD(20, 15) = 5
+Because 5 is the biggest number that divides both 20 and 15.
+```
+**📚 Methods to Find GCD in C++**
+
+#### 1. Brute Force Approach
+We check every number from 1 to the smaller of the two numbers and find the largest number that divides both.
+
+**🧾 C++ Code:**
+```cpp
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int findGCD(int n1, int n2) {
+    int gcd = 1;
+    for (int i = 1; i <= min(n1, n2); i++) {
+        if (n1 % i == 0 && n2 % i == 0) {
+            gcd = i;
+        }
+    }
+    return gcd;
+}
+
+int main() {
+    int a = 20, b = 15;
+    cout << "GCD of " << a << " and " << b << " is: " << findGCD(a, b) << endl;
+    return 0;
+}
+
+```
+
+#### 2. Reverse Loop Approach (Optimized Brute Force)
+We start from the minimum of the two numbers and go backwards. As soon as we find a number that divides both, we return it.
+**🧾 C++ Code:**
+```cpp
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int findGCD(int n1, int n2) {
+    for (int i = min(n1, n2); i >= 1; i--) {
+        if (n1 % i == 0 && n2 % i == 0) {
+            return i; // First common divisor from top is the GCD
+        }
+    }
+    return 1;
+}
+
+int main() {
+    int a = 20, b = 15;
+    cout << "GCD of " << a << " and " << b << " is: " << findGCD(a, b) << endl;
+    return 0;
+}
+
+
+```
+
+#### 3. Euclidean Algorithm (Most Optimal)
+Keep replacing the larger number with the remainder when divided by the smaller number, until one becomes 0.
+**🧾 C++ Code:**
+```cpp
+#include <iostream>
+using namespace std;
+
+int findGCD(int a, int b) {
+    while (a > 0 && b > 0) {
+        if (a > b)
+            a = a % b;
+        else
+            b = b % a;
+    }
+    return (a == 0) ? b : a;
+}
+
+int main() {
+    int a = 20, b = 15;
+    cout << "GCD of " << a << " and " << b << " is: " << findGCD(a, b) << endl;
+    return 0;
+}
+
+```
+#### 📊 Comparison Table (GitHub README Format)
+| Approach             | Time Complexity      | Space Complexity | Method                                                  |
+|----------------------|----------------------|------------------|---------------------------------------------------------|
+| Brute Force          | O(min(n1, n2))       | O(1)             | Check all from 1 to min(n1, n2)                        |
+| Reverse Loop         | O(min(n1, n2))       | O(1)             | Check from min(n1, n2) to 1                            |
+| Euclidean Algorithm  | O(log(min(n1, n2)))  | O(1)             | Use modulo to reduce problem recursively               |
+
+**✅ Sample Output for All:**
+```cpp
+GCD of 20 and 15 is: 5
+```
+
+-----
