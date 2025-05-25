@@ -3242,6 +3242,92 @@ For **space efficiency**, go with **Solution 2** (in-place iterative with two po
 
 ---
 
+### Palindrome String Check
+#### ✅ Problem Statement
+
+Given a string `s`, check whether it is a **palindrome** — i.e., it reads the same backward as forward.
+
+
+#### ✅ Example:
+
+* Input: `"ABCDCBA"` → Output: `Palindrome`
+* Input: `"TAKE U FORWARD"` → Output: `Not Palindrome`
+
+
+#### ✅ Approach 1: Two-Pointer Iterative Method
+
+#### 🔍 Idea:
+
+Use two pointers — one starting at the beginning and the other at the end — to compare characters while skipping non-alphanumeric characters and ignoring case.
+
+#### 🔁 Steps:
+
+1. Initialize `left = 0` and `right = len(s) - 1`
+2. Skip non-alphanumeric characters.
+3. Compare characters ignoring case (`lowercase` both).
+4. If mismatch → return `False`
+5. If loop completes → return `True`
+
+#### 🐍 Python Code:
+
+```python
+def is_palindrome(s: str) -> bool:
+    left, right = 0, len(s) - 1
+    while left < right:
+        while left < right and not s[left].isalnum():
+            left += 1
+        while left < right and not s[right].isalnum():
+            right -= 1
+        if s[left].lower() != s[right].lower():
+            return False
+        left += 1
+        right -= 1
+    return True
+
+# Test
+string = "ABCDCBA"
+print("Palindrome" if is_palindrome(string) else "Not Palindrome")
+```
+
+#### ⏱️ Time Complexity: `O(N)`
+
+#### 🧠 Space Complexity: `O(1)`
+
+#### ✅ Approach 2: Recursive Method
+
+#### 🔁 Steps:
+
+1. Base case: If `i >= len(s)//2`, return `True`
+2. If `s[i] != s[len(s) - i - 1]`, return `False`
+3. Else recurse with `i + 1`
+
+#### 🐍 Python Code:
+
+```python
+def is_palindrome_recursive(i: int, s: str) -> bool:
+    if i >= len(s) // 2:
+        return True
+    if s[i] != s[len(s) - i - 1]:
+        return False
+    return is_palindrome_recursive(i + 1, s)
+
+# Test
+string = "madam"
+print("Palindrome" if is_palindrome_recursive(0, string) else "Not Palindrome")
+```
+
+#### ⏱️ Time Complexity: `O(N)`
+
+#### 🧠 Space Complexity: `O(N)` due to recursion stack
+
+#### ✅ Final Notes:
+
+* Use **iterative approach** for space efficiency.
+* Preprocess the string (optional): remove spaces/special chars if needed using:
+
+```python
+s = ''.join(filter(str.isalnum, s)).lower()
+```
 
 
 
