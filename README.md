@@ -4158,6 +4158,151 @@ Think of **inserting cards in your hand** — you always place the new card at t
 * Easy to implement, often used in teaching.
 
 ---
+## Lec 2 : Sorting-2
+---
+###  Merge Sort
+#### 🧠 Merge Sort Algorithm – Simple Explanation with C++ Code
+
+#### 📌 Problem Statement
+
+Given an array of size `n`, sort the array using **Merge Sort**.
 
 
+#### 📥 Examples
+
+| Input                            | Output                 |
+| -------------------------------- | ---------------------- |
+| `arr[] = {4, 2, 1, 6, 7}`        | `1, 2, 4, 6, 7`        |
+| `arr[] = {3, 2, 8, 5, 1, 4, 23}` | `1, 2, 3, 4, 5, 8, 23` |
+
+
+#### 💡 Intuition
+
+**Merge Sort** is a **Divide and Conquer** algorithm:
+
+1. **Divide** the array into two halves.
+2. **Sort** each half **recursively**.
+3. **Merge** the two sorted halves into one sorted array.
+
+#### 🔄 How It Works (with Steps)
+
+| Step | Description                                                       |
+| ---- | ----------------------------------------------------------------- |
+| 1️⃣  | Divide the array into two halves until each half has one element. |
+| 2️⃣  | Merge the smaller sorted arrays to form larger sorted arrays.     |
+| 3️⃣  | Continue merging until you get the fully sorted array.            |
+
+#### 🔍 Visual Representation
+
+```
+Input: [4, 2, 1, 6, 7]
+
+Split:
+[4, 2, 1]   and   [6, 7]
+↓           ↓
+[4] [2, 1]       [6] [7]
+↓     ↓           ↓   ↓
+[4] [2] [1]       [6] [7]
+↓     ↓           ↓   ↓
+[2, 4]   [1]       [6, 7]
+↓           ↓       ↓
+[1, 2, 4]         [6, 7]
+
+Final Merge → [1, 2, 4, 6, 7]
+```
+
+#### 🧠 Merge Sort Algorithm – Pseudocode
+
+```
+function mergeSort(arr, low, high):
+    if low >= high:
+        return
+    mid = (low + high) / 2
+    mergeSort(arr, low, mid)
+    mergeSort(arr, mid+1, high)
+    merge(arr, low, mid, high)
+
+function merge(arr, low, mid, high):
+    create temp array
+    i = low, j = mid+1
+    while i <= mid and j <= high:
+        pick smaller of arr[i] or arr[j] and put into temp
+    copy remaining elements of left and right part
+    copy temp back to arr[low...high]
+```
+
+#### ✅ C++ Code (Easy to Understand)
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Merge Function: merges two sorted halves
+void merge(vector<int> &arr, int low, int mid, int high) {
+    vector<int> temp;
+    int left = low;
+    int right = mid + 1;
+
+    while (left <= mid && right <= high) {
+        if (arr[left] <= arr[right]) {
+            temp.push_back(arr[left++]);
+        } else {
+            temp.push_back(arr[right++]);
+        }
+    }
+
+    while (left <= mid) temp.push_back(arr[left++]);
+    while (right <= high) temp.push_back(arr[right++]);
+
+    // Copy temp back to original array
+    for (int i = low; i <= high; i++) {
+        arr[i] = temp[i - low];
+    }
+}
+
+// Recursive Merge Sort Function
+void mergeSort(vector<int> &arr, int low, int high) {
+    if (low >= high) return;
+    int mid = (low + high) / 2;
+    mergeSort(arr, low, mid);     // sort left half
+    mergeSort(arr, mid + 1, high); // sort right half
+    merge(arr, low, mid, high);   // merge both halves
+}
+
+int main() {
+    vector<int> arr = {9, 4, 7, 6, 3, 1, 5};
+    int n = arr.size();
+
+    cout << "Before Sorting: ";
+    for (int i : arr) cout << i << " ";
+    cout << endl;
+
+    mergeSort(arr, 0, n - 1);
+
+    cout << "After Sorting: ";
+    for (int i : arr) cout << i << " ";
+    cout << endl;
+
+    return 0;
+}
+```
+
+#### ⏱️ Time and Space Complexity
+
+| Complexity Type | Value                      |
+| --------------- | -------------------------- |
+| Time            | O(n log n)                 |
+| Space           | O(n) (for temporary array) |
+| Auxiliary Space | O(n)                       |
+
+
+#### 📘 Summary Table
+
+| Function      | Purpose                                    |
+| ------------- | ------------------------------------------ |
+| `mergeSort()` | Divides the array and recursively sorts it |
+| `merge()`     | Merges two sorted parts of the array       |
+
+---
 
