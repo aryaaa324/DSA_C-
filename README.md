@@ -3328,6 +3328,137 @@ print("Palindrome" if is_palindrome_recursive(0, string) else "Not Palindrome")
 ```python
 s = ''.join(filter(str.isalnum, s)).lower()
 ```
+----
+### Fibonacci series up to the Nth term
+
+#### ✅ Problem Statement:
+
+Given an integer **N**, print the Fibonacci series **up to the Nth term** (0-based indexing).
+
+#### ❗Examples:
+
+#### Example 1:
+
+* Input: `N = 5`
+* Output: `0 1 1 2 3 5`
+
+#### Example 2:
+
+* Input: `N = 6`
+* Output: `0 1 1 2 3 5 8`
 
 
+#### ✅ Solution 1: Naive Iterative Approach with Array
+
+#### 🔍 Intuition:
+
+We store all Fibonacci numbers in an array and then print them.
+
+#### 🧠 Code:
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n = 5;
+    int fib[n + 1];
+    fib[0] = 0;
+    fib[1] = 1;
+
+    for (int i = 2; i <= n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+    }
+
+    cout << "Fibonacci Series up to " << n << "th term:\n";
+    for (int i = 0; i <= n; i++) {
+        cout << fib[i] << " ";
+    }
+    return 0;
+}
+```
+
+#### ⏱️ Time Complexity: `O(N)`
+
+#### 💾 Space Complexity: `O(N)`
+
+#### ✅ Best Use: When you need to store or reuse previous Fibonacci numbers.
+
+#### ✅ Solution 2: Space Optimized Iterative Approach
+
+#### 🔍 Intuition:
+
+We only need the last two values to compute the next.
+
+#### 🧠 Code:
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n = 5;
+    int a = 0, b = 1;
+
+    cout << "Fibonacci Series up to " << n << "th term:\n";
+    cout << a << " ";
+    if (n >= 1) cout << b << " ";
+
+    for (int i = 2; i <= n; i++) {
+        int next = a + b;
+        cout << next << " ";
+        a = b;
+        b = next;
+    }
+    return 0;
+}
+```
+
+#### ⏱️ Time Complexity: `O(N)`
+
+#### 💾 Space Complexity: `O(1)`
+
+#### ✅ Best Use: When memory is a concern (e.g., embedded systems).
+
+#### ✅ Solution 3: Recursive Approach
+
+#### 🔍 Intuition:
+
+Use `fib(n) = fib(n-1) + fib(n-2)` recursively.
+
+#### 🧠 Code:
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+int fibonacci(int n) {
+    if (n <= 1)
+        return n;
+    return fibonacci(n-1) + fibonacci(n-2);
+}
+
+int main() {
+    int n = 5;
+    cout << "Fibonacci Series up to " << n << "th term:\n";
+    for (int i = 0; i <= n; i++) {
+        cout << fibonacci(i) << " ";
+    }
+    return 0;
+}
+```
+
+#### ⏱️ Time Complexity: `O(2^N)` (exponential)
+
+#### 💾 Space Complexity: `O(N)` (due to recursion stack)
+
+#### ✅ Best Use: For **teaching recursion** or **concept clarity**, but not for performance.
+
+#### ✅ Conclusion:
+
+* ✅ Use **Approach 1** for clarity and when you need the whole series stored.
+* ✅ Use **Approach 2** for optimal performance with minimal memory.
+* ❌ Avoid Approach 3 for large `N` due to exponential time unless optimized with memoization or dynamic programming.
+
+----
 
