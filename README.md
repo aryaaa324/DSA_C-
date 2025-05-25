@@ -3781,3 +3781,81 @@ The lowest frequency element is: 15
 ## Step-2 : Sorting Techniques 
 ## Lec 1 : Sorting-1
 ----
+
+### Selection Sort algorithm
+#### 🔍 **Selection Sort Algorithm - Explanation**
+
+**Problem Statement**: Given an array of size `N`, sort it using the **Selection Sort** algorithm.
+
+
+#### ✅ **How Selection Sort Works**
+
+1. Iterate from index `0` to `n-2`.
+2. For each position `i`, find the **smallest element** from the **unsorted portion** (`i` to `n-1`).
+3. Swap the smallest element with the current element at index `i`.
+4. After `n-1` passes, the array is sorted.
+
+
+#### ✍️ **Dry Run**
+
+Given array: `{7, 5, 9, 2, 8}`
+
+* Pass 1: Find min from `0-4` → `2`. Swap with `7` → `{2, 5, 9, 7, 8}`
+* Pass 2: Find min from `1-4` → `5`. Already in place.
+* Pass 3: Find min from `2-4` → `7`. Swap with `9` → `{2, 5, 7, 9, 8}`
+* Pass 4: Find min from `3-4` → `8`. Swap with `9` → `{2, 5, 7, 8, 9}`
+
+
+#### 💻 **C++ Code for Selection Sort**
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+void selection_sort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int mini = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[mini]) {
+                mini = j;
+            }
+        }
+        swap(arr[mini], arr[i]);
+    }
+}
+
+int main() {
+    int arr[] = {13, 46, 24, 52, 20, 9};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    selection_sort(arr, n);
+
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i];
+        if (i != n - 1) cout << ",";
+    }
+    cout << "\n";
+
+    return 0;
+}
+```
+
+#### ✅ **Output**
+
+```
+Sorted array: 9,13,20,24,46,52
+```
+
+
+#### 🧠 **Time and Space Complexity**
+
+| Complexity | Value           |
+| ---------- | --------------- |
+| Time       | O(N²)           |
+| Space      | O(1) (in-place) |
+| Stable     | ❌ No            |
+
+---
+
+
