@@ -3565,4 +3565,114 @@ Next topics typically include:
 
 ---
 
+### Count frequency of each element in the array
+#### ✅ **Problem Statement**
+
+Given an array, find and print the **number of occurrences** (frequency) of **each element**.
+
+#### 🔁 **Example**
+
+##### Input:
+
+```cpp
+arr[] = {10, 5, 10, 15, 10, 5}
+```
+
+#### Output:
+
+```
+10 3
+5 2
+15 1
+```
+
+#### 🧠 Solution 1: Brute Force (Two Loops)
+
+#### 📝 **Approach:**
+
+* Use a `visited[]` array to track whether an element is already counted.
+* Outer loop for each element.
+* Inner loop to count its frequency.
+* Mark visited indices to avoid recounting.
+
+#### 💻 **Code (C++):**
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+void countFreq(int arr[], int n) {
+    vector<bool> visited(n, false);
+
+    for (int i = 0; i < n; i++) {
+        if (visited[i]) continue;
+
+        int count = 1;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] == arr[j]) {
+                visited[j] = true;
+                count++;
+            }
+        }
+        cout << arr[i] << " " << count << endl;
+    }
+}
+
+int main() {
+    int arr[] = {10, 5, 10, 15, 10, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    countFreq(arr, n);
+    return 0;
+}
+```
+
+#### ⏱ **Time Complexity:** `O(n^2)`
+
+#### 📦 **Space Complexity:** `O(n)`
+
+#### 🚀 Solution 2: Efficient using Hash Map
+
+#### 📝 **Approach:**
+
+* Use `unordered_map` to store frequency.
+* Traverse the array once and update the count.
+* Print the map contents.
+
+#### 💻 **Code (C++):**
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+void Frequency(int arr[], int n) {
+    unordered_map<int, int> map;
+
+    for (int i = 0; i < n; i++) {
+        map[arr[i]]++;
+    }
+
+    for (auto x : map) {
+        cout << x.first << " " << x.second << endl;
+    }
+}
+
+int main() {
+    int arr[] = {10, 5, 10, 15, 10, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    Frequency(arr, n);
+    return 0;
+}
+```
+
+#### ⏱ **Time Complexity:** `O(n)`
+
+#### 📦 **Space Complexity:** `O(n)`
+
+#### ✅ Best Practice
+
+Use **Solution 2 (Hash Map)** for large inputs due to its **linear time complexity**.
+
+---
+
+
 
