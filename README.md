@@ -4306,3 +4306,69 @@ int main() {
 
 ---
 
+### ✅ Recursive Bubble Sort 
+
+#### **Concept**
+
+* In each recursive call, we do one full pass over the unsorted part of the array and push the largest element to the end.
+* Then, recursively sort the remaining `n-1` elements.
+
+#### **Algorithm Steps**
+
+1. **Base Case**: If the size of the array (`n`) is 1, return.
+2. Perform a **single bubble pass** from index `0` to `n-2`:
+
+   * Swap adjacent elements if `arr[j] > arr[j + 1]`.
+   * Keep a flag `didSwap` to check if any swap happened.
+3. If no swaps happened in the entire pass, the array is sorted → return early (optimization).
+4. Recursively call the function with `n-1`.
+
+#### ✅ Python Code (with Optimization)
+
+```python
+def recursive_bubble_sort(arr, n):
+    # Base case: Only one element is left
+    if n == 1:
+        return
+
+    did_swap = False
+
+    # Perform a single pass of bubble sort
+    for i in range(n - 1):
+        if arr[i] > arr[i + 1]:
+            arr[i], arr[i + 1] = arr[i + 1], arr[i]
+            did_swap = True
+
+    # If no swap happened, array is already sorted
+    if not did_swap:
+        return
+
+    # Recursive call for the remaining part
+    recursive_bubble_sort(arr, n - 1)
+
+# Example usage
+arr = [13, 46, 24, 52, 20, 9]
+print("Before Sorting:", arr)
+recursive_bubble_sort(arr, len(arr))
+print("After Sorting:", arr)
+```
+
+#### ✅ Output
+
+```
+Before Sorting: [13, 46, 24, 52, 20, 9]
+After Sorting: [9, 13, 20, 24, 46, 52]
+```
+
+#### 🕒 Time and Space Complexity
+
+| Case    | Time Complexity | Space Complexity       |
+| ------- | --------------- | ---------------------- |
+| Best    | O(N)            | O(N) (recursive stack) |
+| Average | O(N²)           | O(N)                   |
+| Worst   | O(N²)           | O(N)                   |
+
+---
+
+
+
