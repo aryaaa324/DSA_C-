@@ -3461,4 +3461,108 @@ int main() {
 * ❌ Avoid Approach 3 for large `N` due to exponential time unless optimized with memoization or dynamic programming.
 
 ----
+## Lec-6 : Learn Basic Hashing 
+----
+
+### ✅ **1. What is Hashing?**
+
+Hashing is a technique to map **data to a fixed-size array index** using a hash function. It involves:
+
+* **Pre-storing (Precomputation)**: Store frequencies or other info.
+* **Fetching**: Retrieve in O(1) time.
+
+
+### ✅ **2. Brute Force vs Hashing (Frequency Counting Example)**
+
+Given array: `[1, 3, 2, 1, 3]`
+Queries: `[1, 4, 2, 3, 12]`
+
+* **Brute Force**: For each query, scan entire array → Time: `O(Q * N)`
+* **Hashing**:
+
+  * Precompute frequency array: `hash[arr[i]]++` → O(N)
+  * Answer each query: `hash[query[i]]` → O(1)
+  * Total Time: `O(N + Q)`
+
+> Note: Works only if array values are small (within array size limit like ≤ 10⁶).
+
+### ✅ **3. Character Hashing**
+
+#### **Case 1: Lowercase Only (`a` to `z`)**
+
+* Map using: `hash[char - 'a']` (size 26)
+
+#### **Case 2: Uppercase Only (`A` to `Z`)**
+
+* Map using: `hash[char - 'A']` (size 26)
+
+#### **Case 3: Mixed Characters**
+
+* Use ASCII mapping: `hash[char]` (size 256)
+
+### ✅ **4. Handling Large Numbers (e.g., up to 10⁹)**
+
+Arrays cannot store such a large size → Use:
+
+* `unordered_map<int, int>` (C++)
+* `HashMap<Integer, Integer>` (Java)
+* `dict` (Python)
+
+```cpp
+unordered_map<int, int> hash;
+for (int i = 0; i < n; i++) {
+    hash[arr[i]]++;
+}
+
+while (q--) {
+    int x;
+    cin >> x;
+    cout << hash[x] << endl;
+}
+```
+
+### ✅ **5. Time Complexity**
+
+* Brute Force: `O(Q * N)`
+* Optimized Hashing:
+
+  * Precompute: `O(N)`
+  * Query: `O(1)` per query → Total: `O(N + Q)`
+
+> **Note:** For maps/unordered\_maps:
+
+* **`unordered_map`** average case: O(1), worst: O(n) (due to collisions)
+* **`map` (BST based)**: O(log N)
+
+
+### ✅ **6. Collision Handling**
+
+* Hash collisions occur when different elements map to the same hash index.
+* In-built hash maps handle collisions using techniques like **chaining** (linked list) or **open addressing**.
+
+
+### ✅ **7. Division Rule of Hashing**
+
+* A basic hash function: `hash(x) = x % M`
+* M should be a **prime number** to reduce collisions.
+
+
+### ✅ **What’s Next?**
+
+You’ve now mastered:
+
+* Frequency counting
+* Character and number hashing
+* Map vs unordered\_map usage
+* Time complexities
+
+Next topics typically include:
+
+* **Hash Sets**
+* **Count Distinct Elements**
+* **Longest Consecutive Subsequence**
+* **Two Sum / Subarray Sum with Hashing**
+
+---
+
 
