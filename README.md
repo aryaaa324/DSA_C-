@@ -4069,8 +4069,95 @@ int main() {
 **Space Complexity:** O(1) – in-place sort.
 
 ---
+### Insertion Sort
+
+#### 🧠 What is Insertion Sort?
+
+**Insertion Sort** is a simple sorting algorithm that builds the final sorted array one item at a time.
+It works the same way as **sorting cards in your hand** — pick one card at a time and insert it into the correct position.
+
+#### 🔧 How It Works:
+
+1. Start from the **second element** (index `1`).
+2. Compare it to its **left neighbor**.
+3. **Shift** elements to the right until the correct position is found.
+4. Insert the current element at that position.
 
 
+#### 🔁 Dry Run Example
+
+#### Input:
+
+```
+arr[] = {13, 46, 24, 52, 20, 9}
+```
+
+#### Pass-by-pass:
+
+| Pass | i | Current Element | Sorted Left           | Action                                         |
+| ---- | - | --------------- | --------------------- | ---------------------------------------------- |
+| 1    | 1 | 46              | \[13]                 | Already in place                               |
+| 2    | 2 | 24              | \[13, 46]             | 24 < 46 → swap → \[13, 24, 46]                 |
+| 3    | 3 | 52              | \[13, 24, 46]         | Already in place                               |
+| 4    | 4 | 20              | \[13, 24, 46, 52]     | 20 < 52, 46, 24 → shift them → insert at pos 1 |
+| 5    | 5 | 9               | \[13, 20, 24, 46, 52] | 9 < 52, 46, 24, 20, 13 → insert at pos 0       |
+
+Final Output:
+
+```
+[9, 13, 20, 24, 46, 52]
+```
+
+#### ✅ Code Explanation (C++)
+
+```cpp
+void insertion_sort(int arr[], int n) {
+    for (int i = 0; i <= n - 1; i++) {
+        int j = i;
+        while (j > 0 && arr[j - 1] > arr[j]) {
+            // Swap arr[j] and arr[j-1]
+            int temp = arr[j - 1];
+            arr[j - 1] = arr[j];
+            arr[j] = temp;
+            j--;
+        }
+    }
+}
+```
+
+* `i`: Picks each element from left to right.
+* `j`: Moves leftward and swaps until the correct position is found.
+
+
+#### 🧮 Time & Space Complexity
+
+| Case        | Time Complexity | Why                                            |
+| ----------- | --------------- | ---------------------------------------------- |
+| **Best**    | `O(N)`          | Already sorted, inner loop doesn't run.        |
+| **Average** | `O(N²)`         | Half elements need shifting on average.        |
+| **Worst**   | `O(N²)`         | Reverse sorted, every element shifts to front. |
+| **Space**   | `O(1)`          | No extra space, sorting is in-place.           |
+
+
+#### 🟢 When to Use Insertion Sort?
+
+* Small data size
+* Nearly sorted arrays
+* When simplicity matters over performance
+
+
+#### 🧠 Real-Life Analogy
+
+Think of **inserting cards in your hand** — you always place the new card at the right place among already sorted cards.
+
+
+#### ✅ Summary
+
+* **Simple**, stable, in-place sort.
+* Efficient for **small or nearly sorted** data.
+* Easy to implement, often used in teaching.
+
+---
 
 
 
