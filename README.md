@@ -3674,5 +3674,107 @@ Use **Solution 2 (Hash Map)** for large inputs due to its **linear time complexi
 
 ---
 
+### find the highest and lowest frequency elements
+#### ✅ **Problem**
 
+Given an array of size `N`, find:
 
+* The **element with the highest frequency**
+* The **element with the lowest frequency**
+
+#### 💡 **Approach 1: Brute Force (Nested Loops)**
+
+#### ✔️ **Steps:**
+
+1. Use a `visited[]` array to mark duplicates as processed.
+2. For each element, count its frequency by scanning the rest of the array.
+3. Keep track of:
+
+   * `maxFreq` and `maxEle`
+   * `minFreq` and `minEle`
+
+#### 🧠 Time Complexity:
+
+* **O(N²)** due to nested loop.
+
+#### 🧠 Space Complexity:
+
+* **O(N)** for the visited array.
+
+#### 🔢 Example:
+
+```cpp
+Input:  arr[] = {10, 5, 10, 15, 10, 5}
+Output: Highest: 10, Lowest: 15
+```
+
+#### ⚡ **Approach 2: Optimized Using Hash Map**
+
+#### ✔️ **Steps:**
+
+1. Use an **unordered\_map\<int, int>** to store frequency of each element.
+2. Iterate through the array, updating frequencies.
+3. After building the map, find max and min frequencies.
+
+#### 🧠 Time Complexity:
+
+* **O(N)** — inserting in the map is O(1) on average.
+
+#### 🧠 Space Complexity:
+
+* **O(N)** — to store element-frequency pairs.
+
+#### ✅ C++ Code:
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+void Frequency(int arr[], int n) {
+    unordered_map<int, int> freqMap;
+
+    for (int i = 0; i < n; i++)
+        freqMap[arr[i]]++;
+
+    int maxFreq = 0, minFreq = n;
+    int maxEle = 0, minEle = 0;
+
+    for (auto it : freqMap) {
+        int element = it.first;
+        int count = it.second;
+
+        if (count > maxFreq) {
+            maxFreq = count;
+            maxEle = element;
+        }
+        if (count < minFreq) {
+            minFreq = count;
+            minEle = element;
+        }
+    }
+
+    cout << "The highest frequency element is: " << maxEle << "\n";
+    cout << "The lowest frequency element is: " << minEle << "\n";
+}
+
+int main() {
+    int arr[] = {10, 5, 10, 15, 10, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    Frequency(arr, n);
+    return 0;
+}
+```
+
+#### 🧾 Output:
+
+```
+The highest frequency element is: 10
+The lowest frequency element is: 15
+```
+
+#### 🎯 **Conclusion:**
+
+* Use the **brute-force** method for learning and small arrays.
+* Use the **map-based approach** for real-world usage and optimal performance.
+
+----
