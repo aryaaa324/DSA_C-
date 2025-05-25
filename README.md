@@ -3978,7 +3978,7 @@ Input: [1, 2, 3, 4, 5]
 Imagine you're sorting books on a shelf. You start comparing books from the left and swap them if one is out of order. Slowly, the heaviest book (largest number) moves to the end of the row — just like a bubble rising!
 
 
-## ✅ Summary
+#### ✅ Summary
 
 * **Bubble Sort** is simple but not efficient for large data.
 * Works well for **small arrays** or **educational purposes**.
