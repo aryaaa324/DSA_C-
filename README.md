@@ -3115,6 +3115,133 @@ int main() {
 * **Iterative**: Preferred for large values of `X` to avoid stack overflow.
 * **Recursive**: Elegant and clean but limited by maximum recursion depth.
 
+----
+### Reverse a given Array
+#### ✅ **Problem Statement**
+
+Given an array `arr[]` of size `N`, reverse the array in-place or using another array.
+
+
+
+#### 📥 **Example Inputs and Outputs**
+
+**Example 1:**
+
+* Input: `N = 5, arr[] = {5, 4, 3, 2, 1}`
+* Output: `{1, 2, 3, 4, 5}`
+
+**Example 2:**
+
+* Input: `N = 4, arr[] = {10, 20, 30, 40}`
+* Output: `{40, 30, 20, 10}`
+
+#### ✅ **Solutions Explained**
+
+#### 🔁 **Solution 1: Using Extra Array**
+
+#### 🔹 Approach:
+
+* Create an auxiliary array `ans[]` of size `N`.
+* Copy elements from `arr[]` in reverse order into `ans[]`.
+
+#### 🔸 C++ Code:
+
+```cpp
+void reverseArray(int arr[], int n) {
+    int ans[n];
+    for (int i = n - 1; i >= 0; i--) {
+        ans[n - i - 1] = arr[i];
+    }
+    cout << "The reversed array is:-\n";
+    for (int i = 0; i < n; i++) {
+        cout << ans[i] << " ";
+    }
+}
+```
+
+* **Time Complexity:** O(n)
+* **Space Complexity:** O(n)
+
+
+
+#### ♻️ **Solution 2: In-place Iterative (Two Pointers)**
+
+#### 🔹 Approach:
+
+* Use two pointers `p1` and `p2` at start and end.
+* Swap `arr[p1]` and `arr[p2]`, move them inward.
+
+#### 🔸 C++ Code:
+
+```cpp
+void reverseArray(int arr[], int n) {
+    int p1 = 0, p2 = n - 1;
+    while (p1 < p2) {
+        swap(arr[p1], arr[p2]);
+        p1++; p2--;
+    }
+    cout << "The reversed array is:-\n";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+}
+```
+
+* **Time Complexity:** O(n)
+* **Space Complexity:** O(1) ✅ (Efficient)
+
+
+#### 🔄 **Solution 3: Recursive Method**
+
+#### 🔹 Approach:
+
+* Swap `arr[start]` with `arr[end]`, then recursively call with `(start+1, end-1)`.
+
+#### 🔸 C++ Code:
+
+```cpp
+void reverseArray(int arr[], int start, int end) {
+    if (start >= end) return;
+    swap(arr[start], arr[end]);
+    reverseArray(arr, start + 1, end - 1);
+}
+```
+
+In `main()`:
+
+```cpp
+reverseArray(arr, 0, n - 1);
+printArray(arr, n);
+```
+
+* **Time Complexity:** O(n)
+* **Space Complexity:** O(1) (but has recursive call stack)
+
+
+#### ⚙️ **Solution 4: Using Library Function (C++ STL)**
+
+#### 🔹 Approach:
+
+* Use `std::reverse(arr, arr + n)` from `<algorithm>`.
+
+#### 🔸 C++ Code:
+
+```cpp
+#include <algorithm>
+
+void reverseArray(int arr[], int n) {
+    reverse(arr, arr + n);
+}
+```
+
+* **Time Complexity:** O(n)
+* **Space Complexity:** O(1)
+
+#### 📌 **Best Practice**
+For **space efficiency**, go with **Solution 2** (in-place iterative with two pointers).
+
 ---
+
+
 
 
