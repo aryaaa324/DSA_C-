@@ -4323,39 +4323,55 @@ int main() {
 3. If no swaps happened in the entire pass, the array is sorted → return early (optimization).
 4. Recursively call the function with `n-1`.
 
-#### ✅ Python Code (with Optimization)
+```cpp
+#include <iostream>
+using namespace std;
 
-```python
-def recursive_bubble_sort(arr, n):
-    # Base case: Only one element is left
-    if n == 1:
-        return
+void recursiveBubbleSort(int arr[], int n) {
+    // Base case: If only one element is left
+    if (n == 1)
+        return;
 
-    did_swap = False
+    bool didSwap = false;
 
-    # Perform a single pass of bubble sort
-    for i in range(n - 1):
-        if arr[i] > arr[i + 1]:
-            arr[i], arr[i + 1] = arr[i + 1], arr[i]
-            did_swap = True
+    // One pass of bubble sort
+    for (int i = 0; i < n - 1; i++) {
+        if (arr[i] > arr[i + 1]) {
+            swap(arr[i], arr[i + 1]);
+            didSwap = true;
+        }
+    }
 
-    # If no swap happened, array is already sorted
-    if not did_swap:
-        return
+    // If no two elements were swapped, the array is sorted
+    if (!didSwap)
+        return;
 
-    # Recursive call for the remaining part
-    recursive_bubble_sort(arr, n - 1)
+    // Recursive call for the rest of the array
+    recursiveBubbleSort(arr, n - 1);
+}
 
-# Example usage
-arr = [13, 46, 24, 52, 20, 9]
-print("Before Sorting:", arr)
-recursive_bubble_sort(arr, len(arr))
-print("After Sorting:", arr)
+int main() {
+    int arr[] = {13, 46, 24, 52, 20, 9};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Before Sorting: ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+
+    recursiveBubbleSort(arr, n);
+
+    cout << "After Sorting: ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+
+    return 0;
+}
 ```
-
 #### ✅ Output
 
-```
+```cpp
 Before Sorting: [13, 46, 24, 52, 20, 9]
 After Sorting: [9, 13, 20, 24, 46, 52]
 ```
@@ -4369,5 +4385,313 @@ After Sorting: [9, 13, 20, 24, 46, 52]
 | Worst   | O(N²)           | O(N)                   |
 
 ---
+
+### 🧠 RECURSIVE Insertion Sort
+
+Insertion sort is a **simple sorting algorithm** that builds the final sorted array **one element at a time**. It works similar to how we sort playing cards in our hands:
+
+* Take one card (element) at a time.
+* Compare it with cards to its left.
+* Insert it in the correct position by shifting larger elements right.
+
+#### 🔁 **How Regular (Iterative) Insertion Sort Works**
+
+Let’s say we have an array:
+`[13, 46, 24, 52, 20, 9]`
+
+* Start from index 1 → 46: Compare with 13 → already in place.
+* Move to index 2 → 24: Compare with 46 → shift 46 right → insert 24.
+* Move to index 3 → 52: Already in place.
+* Move to index 4 → 20: Compare with 52, 46, 24 → shift all right → insert 20.
+* Move to index 5 → 9: Compare with all → shift all right → insert 9 at index 0.
+
+#### 🔄 **Recursive Insertion Sort Concept**
+
+Instead of using loops, we use **recursion** to:
+
+* Take one element at a time.
+* Recursively ensure that the **left part is sorted**.
+* Then **insert the current element** in the correct position within the sorted part.
+
+#### ✅ Steps:
+
+1. Base Case: If index `i == n`, stop.
+2. Recursive Case:
+
+   * Take the `i-th` element.
+   * Move backward (like the inner loop) to find its correct position.
+   * Swap elements if needed.
+   * Call the function for `i + 1`.
+
+#### 🔍 **Dry Run Example**
+
+Array: `[13, 46, 24, 52, 20, 9]`
+
+| Recursive Call | Index `i` | Action                                                                |
+| -------------- | --------- | --------------------------------------------------------------------- |
+| Call 1         | 0         | Only 13 → already sorted                                              |
+| Call 2         | 1         | 46 > 13 → no change                                                   |
+| Call 3         | 2         | 24 < 46 → swap 46 and 24 → `[13, 24, 46, 52, 20, 9]`                  |
+| Call 4         | 3         | 52 > 46 → no change                                                   |
+| Call 5         | 4         | 20 < 52 → shift 52, 46, 24 → insert 20 → `[13, 20, 24, 46, 52, 9]`    |
+| Call 6         | 5         | 9 < all → shift all → insert 9 at index 0 → `[9, 13, 20, 24, 46, 52]` |
+| Call 7         | 6         | Base case → stop recursion                                            |
+
+#### 📊 **Time and Space Complexity**
+
+| Type            | Complexity                    |
+| --------------- | ----------------------------- |
+| Worst Case Time | O(N²)                         |
+| Best Case Time  | O(N)                          |
+| Space           | O(N) – due to recursion stack |
+
+#### 💡 Summary
+
+* **Insertion Sort** builds a sorted list one element at a time.
+* In the **recursive version**, we:
+
+  * Sort the left part recursively.
+  * Insert the current element into its correct place.
+* It is **not efficient for large datasets**, but it’s good for **learning sorting algorithms**.
+
+Here's a clean **Python version** of the **Recursive Insertion Sort algorithm**, based on the C++ solution you shared:
+
+
+#### ✅ **Recursive Insertion Sort in C++**
+```cpp
+#include <iostream>
+using namespace std;
+
+void recursiveInsertionSort(int arr[], int i, int n) {
+    // Base case
+    if (i == n)
+        return;
+
+    // Insert arr[i] into the sorted subarray arr[0...i-1]
+    int j = i;
+    while (j > 0 && arr[j - 1] > arr[j]) {
+        swap(arr[j], arr[j - 1]);
+        j--;
+    }
+
+    // Recursive call for the next element
+    recursiveInsertionSort(arr, i + 1, n);
+}
+
+int main() {
+    int arr[] = {13, 46, 24, 52, 20, 9};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Before Using Insertion Sort:" << endl;
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+
+    recursiveInsertionSort(arr, 0, n);
+
+    cout << "After Using Insertion Sort:" << endl;
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+
+    return 0;
+}
+```
+### 💡 **Output:**
+
+```cpp
+Before Using Insertion Sort:
+[13, 46, 24, 52, 20, 9]
+After Using Insertion Sort:
+[9, 13, 20, 24, 46, 52]
+```
+
+---
+Sure! Here's the **C++ code for Quick Sort** along with a **step-by-step explanation**:
+
+---
+
+### ✅ **C++ Code (Quick Sort)**
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Partition function to place pivot at correct position
+int partition(vector<int>& arr, int low, int high) {
+    int pivot = arr[low]; // First element as pivot
+    int i = low;
+    int j = high;
+
+    while (i < j) {
+        // Find element greater than pivot from the left
+        while (arr[i] <= pivot && i <= high - 1) i++;
+        // Find element smaller than pivot from the right
+        while (arr[j] > pivot && j >= low + 1) j--;
+
+        // Swap elements if needed
+        if (i < j) swap(arr[i], arr[j]);
+    }
+
+    // Place pivot in its correct position
+    swap(arr[low], arr[j]);
+    return j; // Return partition index
+}
+
+// Recursive Quick Sort function
+void quickSortHelper(vector<int>& arr, int low, int high) {
+    if (low < high) {
+        int partitionIndex = partition(arr, low, high);
+        quickSortHelper(arr, low, partitionIndex - 1);  // Left subarray
+        quickSortHelper(arr, partitionIndex + 1, high); // Right subarray
+    }
+}
+
+// Wrapper function to call quickSortHelper
+vector<int> quickSort(vector<int> arr) {
+    quickSortHelper(arr, 0, arr.size() - 1);
+    return arr;
+}
+
+// Main function
+int main() {
+    vector<int> arr = {4, 6, 2, 5, 7, 9, 1, 3};
+    cout << "Before Quick Sort: ";
+    for (int num : arr) cout << num << " ";
+    cout << endl;
+
+    vector<int> sorted = quickSort(arr);
+    cout << "After Quick Sort: ";
+    for (int num : sorted) cout << num << " ";
+    cout << endl;
+
+    return 0;
+}
+```
+
+---
+### Quick Sort
+#### 🔍 **Explanation**
+
+Let’s understand step-by-step how Quick Sort works using the input:
+
+**Input: `{4, 6, 2, 5, 7, 9, 1, 3}`**
+
+#### Step 1: Pick Pivot
+
+* First pivot = `4` (first element)
+
+#### Step 2: Partition
+
+* Move elements `<4` to left, and `>4` to right.
+* Result after first partition: `{3, 1, 2, 4, 7, 9, 5, 6}`
+* Pivot `4` placed correctly at index 3.
+
+
+#### Step 3: Recursive Sorting
+
+Now recursively sort:
+
+1. Left part: `{3, 1, 2}`
+2. Right part: `{7, 9, 5, 6}`
+
+
+#### Left Subarray `{3, 1, 2}`
+
+* Pivot = `3`
+* After partition: `{2, 1, 3}`
+* `3` placed at correct position (index 2)
+
+Recursively sort:
+
+* `{2, 1}` → pivot = `2` → `{1, 2}` → sorted
+
+
+#### Right Subarray `{7, 9, 5, 6}`
+
+* Pivot = `7`
+* After partition: `{6, 5, 7, 9}`
+* `7` at index 6
+
+Recursively sort:
+
+* `{6, 5}` → pivot = `6` → `{5, 6}` → sorted
+
+##### Final Sorted Array:
+
+`{1, 2, 3, 4, 5, 6, 7, 9}` ✅
+
+
+
+#### 📈 Time & Space Complexity
+
+| Case         | Time Complexity |
+| ------------ | --------------- |
+| Best Case    | O(N log N)      |
+| Average Case | O(N log N)      |
+| Worst Case   | O(N²)           |
+
+**Space Complexity**: O(1) extra + O(log N) recursive stack (average)
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Partition function to place pivot at correct position
+int partition(vector<int>& arr, int low, int high) {
+    int pivot = arr[low]; // First element as pivot
+    int i = low;
+    int j = high;
+
+    while (i < j) {
+        // Find element greater than pivot from the left
+        while (arr[i] <= pivot && i <= high - 1) i++;
+        // Find element smaller than pivot from the right
+        while (arr[j] > pivot && j >= low + 1) j--;
+
+        // Swap elements if needed
+        if (i < j) swap(arr[i], arr[j]);
+    }
+
+    // Place pivot in its correct position
+    swap(arr[low], arr[j]);
+    return j; // Return partition index
+}
+
+// Recursive Quick Sort function
+void quickSortHelper(vector<int>& arr, int low, int high) {
+    if (low < high) {
+        int partitionIndex = partition(arr, low, high);
+        quickSortHelper(arr, low, partitionIndex - 1);  // Left subarray
+        quickSortHelper(arr, partitionIndex + 1, high); // Right subarray
+    }
+}
+
+// Wrapper function to call quickSortHelper
+vector<int> quickSort(vector<int> arr) {
+    quickSortHelper(arr, 0, arr.size() - 1);
+    return arr;
+}
+
+// Main function
+int main() {
+    vector<int> arr = {4, 6, 2, 5, 7, 9, 1, 3};
+    cout << "Before Quick Sort: ";
+    for (int num : arr) cout << num << " ";
+    cout << endl;
+
+    vector<int> sorted = quickSort(arr);
+    cout << "After Quick Sort: ";
+    for (int num : sorted) cout << num << " ";
+    cout << endl;
+
+    return 0;
+}
+```
+---
+
+
 
 
