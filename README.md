@@ -7,7 +7,7 @@ A repository containing all the detailed concepts of Data Structures and Algorit
 ## Lec-1 : Basic Things to Know in C++
 ----
 ### Imput/Output in C++
-A short and simple summary of C++ I/O for beginners – inspired by takeUforward.
+A short and simple summary of C++ I/O for beginners – inspired by takeUforward
 
 
 #### ✅ 1. Include Libraries
